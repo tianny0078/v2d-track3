@@ -29,7 +29,11 @@ for title,relative in [('CHORD GPU接口验证','notes/track3-flashchord-interfa
                        ('桌面与时间窗口约束','outputs/track3/episode_000011/agent_cup_pose_supported/report.json'),
                        ('机器人手IK初始化','outputs/track3/episode_000011/sharpa_keypoint_initializer_v2/report.json'),
                        ('CHORD接触与wrench敏感性','outputs/track3/episode_000011/contact_wrench_probe/report.json'),
-                       ('保留杯腔的碰撞体物理检查','outputs/track3/episode_000011/agent_cup_collision_smoke/report.json')]:
+                       ('保留杯腔的碰撞体物理检查','outputs/track3/episode_000011/agent_cup_collision_smoke/report.json'),
+                       ('COM与未知接触语义探针','outputs/track3/episode_000011/wrench_origin_semantics/report.json'),
+                       ('官方基线链路诊断','outputs/track3/episode_000011/baseline_probe/report.json'),
+                       ('持续推进器','notes/track3-continuation-state.json'),
+                       ('Kaggle六指标入赛','notes/track3-kaggle-entry.json')]:
     path=ROOT/relative
     if not path.exists():continue
     r=json.loads(path.read_text());entry={'name':title,'state':r.get('state','unknown')}
@@ -50,13 +54,52 @@ for title,relative in [('CHORD GPU接口验证','notes/track3-flashchord-interfa
     elif title=='机器人手IK初始化':
         e=r.get('fingertip_error_p50_p95_m',[0,0]);entry['detail']=f"{r.get('completed_hand_instances',0)}手实例，指尖拟合中位/P95 {e[0]*1000:.1f}/{e[1]*1000:.1f}mm，关节越界0。仅位置IK，接触优化与执行尚未验证。"
     elif title=='CHORD接触与wrench敏感性':
-        counts=r.get('threshold_sensitivity',[]);entry['detail']='官方GPU wrench内核运行完成；5/10/20mm距离阈值对应 '+ '/'.join(str(v['active_link_count']) for v in counts)+' 个临近关节对。对齐误差敏感，属于几何接触能力参考，尚未训练。'
-    else:
+        counts=r.get('threshold_sensitivity',[]);entry['detail']='官方GPU wrench内核运行完成；5/10/20mm距离阈值对应 '+ '/'.join(str(v['active_link_count']) for v in counts)+' 个临近关节对。对齐误差敏感；该接触参考尚未集成生产训练。'
+    elif title=='保留杯腔的碰撞体物理检查':
         newton=r.get('newton',{});entry['detail']='每杯64个凸壁楔加杯底；三种假设壁厚静置/嵌套检查完成。同轴最大采样插入164/144/118mm。Newton CPU实际'+str(newton.get('actual_newton_solver_steps',0))+'步，静置检查'+('通过' if newton.get('rest_gate') else '待通过')+'；尚未验证整段轨迹或GPU批量。'
+    elif title=='COM与未知接触语义探针':
+        entry['detail']='参考/runtime两侧同时转COM支持误差小于4.8e-7，刚体不变性检查通过；unknown必须排除归一化分母。生产环境/奖励接入未完成，初态物理质量仍未通过。'
+    elif title=='官方基线链路诊断':
+        entry['detail']='GPU3小规模64→80步训练、checkpoint、独立恢复与真实policy rollout'+('链路通过' if r.get('policy_rollout_pass') else '执行中')+'。当前短训练成功率0；不能据80步判断算法能力，也不是Kaggle得分。'
+    elif title=='持续推进器':
+        entry['detail']=f"服务器顺序推进第{r.get('cycle',0)}轮，状态{r.get('state','unknown')}；每轮保存结果后自动接续下一步并触发本页更新。GPU实验是否运行以各job核查为准。最近心跳：{r.get('heartbeat_utc','未知')}。"
+    else:
+        entered=sum(c.get('entered') is True for c in r.get('competitions',[]))
+        entry.update(state='completed' if r.get('all_six_entered') else 'pending',detail=f'{entered} / 6指标已加入。按服务器现有凭证只读核查；'+('六项规则接受已确认，无需重复操作。' if r.get('all_six_entered') else '需本人同一账号在浏览器Join/Accept。')+'官网每队一次报名为独立流程，表单状态未核实。未上传。')
+        labels={'add_auc':'AUC','spider_sr':'SP-SR','maniptrans_sr':'MP-SR','rpe_cm':'RPE','mppe_cm':'MPPE','cd_o_cm':'CD-O'}
+        entry['links']=[{'label':labels[c['metric']],'url':c['rules_url']} for c in r.get('competitions',[]) if c.get('metric') in labels and c.get('rules_url','').startswith('https://www.kaggle.com/competitions/v2d-challenge-track3-')]
+        entry['links'].append({'label':'官网团队报名','url':'https://docs.google.com/forms/d/e/1FAIpQLSdZJYNsEPPGDeIRH2yb_Dui-lWcIxWRF2CON7UOIijzCw8zyA/viewform'})
     experiments.append(entry)
+for title, relative, detail in [
+    ('手桌坐标与原始双目交叉核查', 'outputs/track3/episode_000011/hand_table_reconcile/report.json', '18帧核查完成；坐标一致性和双目/桌背景交叉检查通过。参考未修复，几何gate未通过；未自动替换手参考。'),
+    ('Masked接触奖励内核', 'outputs/track3/episode_000011/masked_contact_kernels/report.json', '四项Warp内核及批量/reset gather验证通过；全known误差0，混合unknown误差2.384e-7。生产入口尚未接线，无新增物理步；training_ready=false。')]:
+    path=ROOT/relative
+    if path.exists():
+        report=json.loads(path.read_text())
+        experiments.append({'name':title, 'state':report.get('state','component_verified'), 'detail':detail})
+objective_path=ROOT/'outputs/track3/episode_000011/masked_objective_integration/report.json'
+if objective_path.exists():
+    objective=json.loads(objective_path.read_text())
+    experiments.append({'name':'MaskedObjectiveSpec组件验证','state':'component_verified' if objective.get('objective_spec_factory_verified') else 'pending','detail':'工厂及完整evaluator验证通过，全known误差0、unknown/NaN隔离通过；新增物理步0。生产入口未集成，真实多world step/reward/reset待验证；training_ready=false。'})
+for title, relative, detail in [
+    ('双world真实GPU奖励诊断', 'masked_physics_integration', '2 world、3控制步、15 solver调用/30 world物理步；独立reset、时序mask gather、COM和原contact保留通过。runtime环境接线通过，learner入口未验证；真实GT接触全unknown，production_integrated=false、training_ready=false；不是策略训练。'),
+    ('手桌联合拟合候选', 'hand_table_joint_fit', '27训练帧/15留出帧；留出穿桌18.27mm，图像/几何gate失败。未替换参考、未重建机器人或重跑物理；training_ready=false。'),
+    ('初始未观测机器人规划', 'initial_unobserved_robot_plan', '仅改首次观测前0至4帧机器人右腕规划候选；300步native物理smoke，穿透gate失败。未推断未观测人手动作，未自动采用；training_ready=false。')]:
+    report_path=ROOT/'outputs/track3/episode_000011'/relative/'report.json'
+    if report_path.exists():
+        report=json.loads(report_path.read_text())
+        experiments.append({'name':title, 'state':report.get('state','unknown'), 'detail':detail})
+for title, relative, detail in [
+    ('参考帧序与左右手映射验证', 'reference_alignment', '官方setup_scene双world CPU构建与137帧对齐通过，位置/旋转误差0；左右手映射[1,0]、88帧裁剪与拒绝不安全转换通过。未运行learner，无新增物理步，training_ready=false。'),
+    ('手桌v2候选native物理检查', 'hand_table_joint_fit/v2_keypoint_balanced/physics', '28/86两帧、80步native物理检查完成；刚体FK匹配及有限状态通过，穿透门槛失败。整段候选未采纳，未替换生产参考；不是策略rollout，training_ready=false。')]:
+    report_path=ROOT/'outputs/track3/episode_000011'/relative/'report.json'
+    if report_path.exists():
+        report=json.loads(report_path.read_text())
+        state='failed' if report.get('gates',{}).get('all_candidate_penetrations_under_1mm') is False else report.get('state','unknown')
+        experiments.append({'name':title,'state':state,'detail':detail})
 safe['experiments']=experiments
 if (ROOT/'notes/track3-hourly-agent-job.json').exists():
-    safe['hourly_updates']='每小时由服务器agent核查并更新；步骤完成后也会发布。'
+    safe['hourly_updates']='每小时由服务器agent核查并更新；持续推进器每步完成会触发额外发布。'
     statepath=ROOT/'notes/track3-hourly-agent-state.json'
     if statepath.exists():
         state=json.loads(statepath.read_text());nextrun=state.get('next_run_utc')

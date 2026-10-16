@@ -29,7 +29,16 @@
   for (const item of data.experiments || []) {
     const card=document.createElement('div');card.className='panel milestone-card';
     const name=document.createElement('h3');name.textContent=item.name+' · '+(labels[item.state]||item.state);
-    const detail=document.createElement('p');detail.textContent=item.detail;card.append(name,detail);experiments.append(card);
+    const detail=document.createElement('p');detail.textContent=item.detail;card.append(name,detail);
+    if (item.links && item.links.length) {
+      const links=document.createElement('p');links.className='caption';
+      for (const itemLink of item.links) {
+        const a=document.createElement('a');a.href=itemLink.url;a.textContent=itemLink.label+' ↗';a.target='_blank';a.rel='noopener';
+        if (links.childNodes.length) links.append(document.createTextNode(' · '));links.append(a);
+      }
+      card.append(links);
+    }
+    experiments.append(card);
   }
   const list = document.getElementById('live-milestones');
   for (const item of data.milestones) {

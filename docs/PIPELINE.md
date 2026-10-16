@@ -14,15 +14,19 @@
 | 手部重定向初始化 | `initialize_sharpa_retarget.py` | 官方 Sharpa 运动学、关节范围、拟合与未知手 |
 | CHORD 参考 | `probe_contact_wrench.py` | 接触点、向内法向、摩擦锥、共享 512 方向与一次半径归一化 |
 | 官方接口 | `agent_reference_preflight.py` | 真实 parquet 加载、frame FK、link/COM、一致坐标与场景编译 |
-| 训练、评估、打包 | 尚未完成 | checkpoint 恢复与真实控制；不能用参考回放冒充 rollout |
+| 接触语义与 COM 接入 | `track3_masked_contact.py`, `track3_masked_objective.py`, `track3_com_reference.py`, `track3_reference_alignment.py` | 全 known 等价、unknown 屏蔽各分母、左右手与帧序、双 world 真实 GPU 物理/reset；learner 另行验证 |
+| 手桌冲突修复 | `agent_hand_table_reconcile.py`, `agent_hand_table_joint_fit_v2.py`, `agent_hand_table_joint_physics.py` | 原始双目与背景平面交叉核查、TRAIN 选择、重复留出监测、MANO 与机器人碰撞分别检查 |
+| 训练、评估、打包 | `agent_baseline_probe.py`，项目 learner 入口继续验证 | 已有 64→80 步诊断、15 个 checkpoint、恢复与真实 272 步策略 rollout；SR0，完整物理参考与评分打包未完成 |
 
 ## 坐标与不确定性
 
 原始重建世界系来自首帧相机，不能当作 mocap GT 世界系。仿真前通过拟合桌面建立 Z-up 变换，手腕、物体、接触和机器人 frame 必须同时转换。四元数接口采用显式 `wxyz` 约定。
 
-杯子 URDF link 原点位于杯底 canonical 中心；其 COM 在惯性参数中，偏移约 84 mm。官方当前 wrench 路径在 link/body 原点计算矩，虽然文档称 COM；reference 与 runtime 两侧必须一致处理，不能只改一侧。
+杯子 URDF link 原点位于杯底 canonical 中心；其 COM 在惯性参数中，偏移约 84 mm。官方当前 wrench 路径在 link/body 原点计算矩，虽然文档称 COM；项目侧 COM 支持视图和 runtime 转换已做对称验证，不能将该视图传给场景/位姿跟踪，也不能只改一侧。mask 对齐当前只允许原始 FPS、speed=1、未缩放物体；不支持的重定时/缩放会明确拒绝。
 
 程序杯的壁厚、杯底、质量和摩擦是假设。网格封闭、碰撞资产可嵌套、观测拟合合格和策略成功分别记录。未知人手或接触保存在 sidecar mask，不作为 GT 负例。
+
+真实 GT 接触当前全部未知，因此安全诊断的接触奖励为零；它验证生产接线而非 force 学习效果。后续几何 proxy 必须单独记录有效性/置信度与来源，不能冒充测得的力或真实接触标签。有限圆桌只是候选：排除了桌外假碰撞，但留出边界仍未合格。局部人手拟合通过不代表形态不同的机器人也无碰撞。
 
 ## 方法参考
 

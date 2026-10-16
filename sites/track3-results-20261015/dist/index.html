@@ -5,7 +5,7 @@
   <meta name="description" content="V2D Track 3 公开样本的离线重建结果：关键帧、立体深度、手部轨迹与可交互的双杯局部网格。">
   <meta name="color-scheme" content="light"><title>Track 3 · 全链路任务进度</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%23263fc5'/%3E%3Ctext x='32' y='43' text-anchor='middle' fill='white' font-family='sans-serif' font-size='32' font-weight='bold'%3E03%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css"><script src="assets/data.js" defer></script><script src="assets/progress-data.js?v=20261016002001" defer></script><script src="progress.js" defer></script><script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css"><script src="assets/data.js" defer></script><script src="assets/progress-data.js?v=20261016112526" defer></script><script src="progress.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到结果</a>
@@ -27,7 +27,7 @@
     <div class="eyebrow"><span class="dot"></span> TRACK 3 / OFFLINE RECONSTRUCTION</div>
     <div class="intro-row"><div><h1>137 帧视频，<br><span>重建到哪一步了？</span></h1><p class="lead">把实际结果放在一起：双杯分割、立体深度、手部重建，以及多帧融合得到的局部表面。</p></div>
       <div class="snapshot"><span class="label">实验快照</span><strong id="updated">正在载入</strong><span>公开样本 episode_000011</span><a href="downloads/results-summary.json" download>下载结果摘要 JSON <span aria-hidden="true">↗</span></a></div></div>
-    <div class="scope-note"><span class="pill">样本验证</span> 本页展示公开 episode 11；尚未完成 20 段评分数据、策略训练或真实 rollout。</div>
+    <div class="scope-note"><span class="pill">样本验证</span> 本页展示公开 episode 11；已跑通小规模训练、恢复和真实 rollout 链路，当前短训练策略成功率为 0，尚未覆盖 20 段评分数据。</div>
     <div class="stats">
       <div class="stat"><span>处理帧数</span><strong>137<small>帧</small></strong><p>三路同步视频，同一校准几何</p></div>
       <div class="stat"><span>手部重建实例</span><strong>233<small>个</small></strong><p>96 帧双手 · 41 帧单手</p></div>
@@ -49,6 +49,8 @@
     <div class="panel progress-snapshot"><h3>桌面非穿透已修正，双杯相交仍需处理</h3><p>137 帧通过桌面硬约束；24 / 25 时间窗口接受。杯子抬起时不会被吸附回桌面。末态杯间材料交叉约 9.15%，当前仍未通过完整物理参考检查。</p><details><summary>查看第 113 帧桌面约束前后对照</summary><a href="assets/cup-table-supported.jpg" target="_blank" rel="noopener"><img src="assets/cup-table-supported.jpg" style="display:block;width:100%;height:auto" alt="第113帧加入桌面非穿透和时间窗口约束的前后渲染对照" loading="lazy"></a></details><h3>机器人手 IK 初始化完成</h3><p>233 个可见手实例，指尖拟合中位 1.5 mm、P95 4.9 mm，关节越界 0。采用官方 Sharpa 运动学和位置权重；当前尚未验证接触优化、动力学或策略执行。</p></div>
     <div class="panel progress-snapshot"><h3>CHORD 接触 / wrench 的实际 GPU 诊断</h3><p>共享 512 个六维方向，8 条摩擦锥边加法向，比较摩擦系数 0.1 / 0.3 / 0.6 与距离阈值 5 / 10 / 20 mm。邻近关节对计数随阈值从 1304 增至 2408，说明当前接触参考对几何误差敏感。</p><a href="assets/contact_wrench_uncertainty.png" target="_blank" rel="noopener"><img src="assets/contact_wrench_uncertainty.png" style="display:block;width:100%;height:auto" alt="三档接触阈值、三档摩擦系数的wrench能力曲线及观测手可用性" loading="lazy"></a><p class="caption">这是候选几何的接触能力，不是视频测得的真实力。物体穿透或错误法向可能虚增能力；缺失手保持未知。此参考尚未用于训练。<a href="assets/contact_wrench_uncertainty.pdf" target="_blank" rel="noopener">下载图表 PDF ↗</a></p></div>
   </section>
+
+  <section class="section" id="baseline-diagnostics"><div class="section-head"><div><div class="kicker">BASELINE / 实际运行证据</div><h2>训练、恢复、真实策略执行已连通</h2></div><span class="pill amber">短训练诊断 · 任务未成功</span></div><div class="panel progress-snapshot"><p>GPU 3、1 world：先训练 64 步，再由独立进程读取 state 与 replay 恢复到 80 步；15 个 checkpoint 全部有限，梯度更新 55 → 71。未启用物体辅助力。</p><p>官方 evaluator 实际执行 272 步，导出 544 行双杯轨迹。相对临时重建参考：成功率 0，平均对象位置误差 19.44 cm，MPPE 26.14 cm。80 步只验证链路，不能判断算法能力；这里没有 Kaggle 得分。</p><a href="assets/baseline_policy_rollout.png" target="_blank" rel="noopener"><img src="assets/baseline_policy_rollout.png" style="display:block;width:100%;height:auto" alt="真实策略的双杯位置误差与link高度，短训练策略未能跟随抬杯参考" loading="lazy"></a><p class="caption">地面碰撞和重力均存在；完整时长执行不等于成功。首个蓝杯倾斜超限出现在导出 step 16，位置误差超过10cm为step19。<a href="assets/baseline_policy_rollout.pdf" target="_blank" rel="noopener">下载PDF ↗</a></p></div></section>
 
   <section id="frames" class="section">
     <div class="section-head"><div><div class="kicker">01 / KEYFRAMES</div><h2>同一帧，直接对照</h2></div><div class="frame-controls" role="group" aria-label="选择关键帧"><button data-frame="0" aria-pressed="false">0 <span>初始</span></button><button data-frame="68" class="active" aria-pressed="true">68 <span>操作中</span></button><button data-frame="136" aria-pressed="false">136 <span>结束</span></button></div></div>

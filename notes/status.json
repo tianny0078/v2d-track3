@@ -1,6 +1,6 @@
 {
-  "updated_utc": "2026-10-16T08:07:11.188373+00:00",
-  "updated_los_angeles": "2026-10-16T01:07:11.188373-07:00",
+  "updated_utc": "2026-10-16T18:27:27.299549+00:00",
+  "updated_los_angeles": "2026-10-16T11:27:27.299702-07:00",
   "active_track": 3,
   "episode": "episode_000011",
   "scoring_episode": false,
@@ -9,7 +9,8 @@
     "table_nonpenetration_hard_pass": true,
     "geometric_reference_ready": false,
     "heldout_silhouette_iou_median": 0.9364180290546087,
-    "cup_material_conflict_resolved": false
+    "cup_material_conflict_resolved": false,
+    "observed_hand_table_conflict_resolved": false
   },
   "ik_initializer": {
     "visible_hand_instances": 233,
@@ -72,13 +73,48 @@
     ],
     "force_measurements_available": false
   },
-  "policy_training_started": false,
-  "real_policy_rollout_completed": false,
+  "policy_training_started": true,
+  "real_policy_rollout_completed": true,
   "batch_processing_started": false,
   "next_steps": [
-    "Make link/body versus COM wrench origin explicit on both reference and runtime paths.",
-    "Represent unknown contacts in the training objective.",
-    "Resolve object material intersections and verify a physical reference.",
-    "Run bounded train/save/resume/evaluate before processing all scoring episodes."
-  ]
+    "Complete actual project learner/checkpoint integration.",
+    "Repair the full hand/table reference and collision-constrained retarget under image/depth gates.",
+    "Resolve cup material intersections without sealing the cavity.",
+    "Validate a meaningful single-episode policy before processing the scored cohort."
+  ],
+  "training_ready": false,
+  "submission_ready": false,
+  "diagnostic_baseline": {
+    "training_steps": 64,
+    "resumed_terminal_steps": 80,
+    "checkpoint_files": 15,
+    "independent_resume_pass": true,
+    "real_policy_control_steps": 272,
+    "success_rate": 0,
+    "is_kaggle_score": false,
+    "sufficient_training": false
+  },
+  "masked_COM_integration": {
+    "kernel_allknown_max_error": 0.0,
+    "masked_terms_pass": true,
+    "COM_symmetric_support_pass": true,
+    "real_GPU_worlds": 2,
+    "real_GPU_world_physics_steps": 30,
+    "independent_reset_pass": true,
+    "learner_validation": "in_progress",
+    "actual_GT_known_contacts": 0,
+    "force_learning_demonstrated": false,
+    "production_ready": false
+  },
+  "kaggle_entry": {
+    "all_six_entered": true,
+    "uploads_performed": 0,
+    "official_team_form_status": "not_verified"
+  },
+  "continuation": {
+    "server_tmux_active": true,
+    "automatic_cycle_transition_verified": true,
+    "sequential_track": 3,
+    "step_triggered_publication": true
+  }
 }

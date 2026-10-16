@@ -1,30 +1,21 @@
-# 当前进度（2026-10-16 01:07 PDT）
+# 当前进度（2026-10-16 11:27 PDT 快照）
 
-当前只处理公开 episode 11 的 137 帧，尚未处理评分全量、策略训练或真实策略 rollout。
+当前仍只处理公开 episode 11 的 137 帧。已完成 64→80 步短训练、15 个 checkpoint、独立恢复和 272 控制步真实策略 rollout；本地成功率 0。它验证执行链路，不是充分训练或 Kaggle 分数。评分全量未开始，尚未上传。
 
-## 已有结果
+## 新增证据
 
-- 标定、双杯时序分割、双目深度、背景 VO、手跟踪和表面融合已完成。
-- 原手轨迹 233 实例；HOT3D 对照 241 实例。缺失手保持未知。
-- 程序空心杯与 SAM3D 候选已生成。桌面非穿透全 137 帧通过，留出轮廓 IoU 中位约 0.936；杯间材料相交仍未通过。
-- 复合凸碰撞体每杯 64 壁楔加杯底，三种壁厚静置/嵌套通过；Newton SolverMuJoCo CPU 实际 1000 步通过。双杯 URDF 已导入并编译，质量/COM/惯量一致。
-- Sharpa 位置 IK 完成 233 实例，指尖拟合中位/P95 约 1.5/4.9 mm，关节越界 0。接触与执行仍待验证。
-- CHORD 官方 GPU wrench 内核运行完成，比较 512 共享方向、三档摩擦与距离阈值。它是几何接触能力参考，不是视频测得的力。
-- 官方参考接口加载 137 帧/20Hz parquet，CPU 场景 54 bodies、241 shapes、68 DOF 编译通过；该预检没有运行动力学或策略训练。
+- 四项带 validity mask 的 Warp 接触奖励内核：全 known 与官方误差 0，混合 unknown 最大误差约 2.4e-7；全 unknown/NaN 隔离和 reset gather 通过。
+- 双侧 COM 支持变换与原始接触 buffer 保留通过；双 world 真实 GPU 物理共 30 world steps、奖励非零、独立 reset 通过。真实 GT 接触全未知，故接触项归零；不能说已经学会 force 参考。项目 learner 入口继续验证。
+- 官方 setup_scene 的左右手、帧索引与裁剪已对齐。只允许 speed=1、原始 FPS、未缩放对象；不支持的变换会拒绝。
+- 手桌交叉核查排除了足以解释约 40 mm 冲突的坐标/尺度/平面误用。联合手姿拟合产生局部改进，但全段仍未合格；MANO 和机器人碰撞分别检查。
+- 有限桌面对照消除了桌外无限平面假碰撞。中段手掌穿桌、后段蓝杯壁与米杯底相交仍是实际失败。有限桌边界也未通过独立几何门槛。
+- 仅调整初始未知右手机器人计划的 1058 个候选仍有 23.8 mm 最坏相交，已拒绝；人手缺失 NaN、已观测机器人与接触未知标签均未改。
+- 六项 Kaggle 入赛已只读核实；官网团队表单状态未核实。公开 episode11 不评分，正式有效产物仍需全部20评分段/36对象。
 
-## 当前门槛
+## 持续运行
 
-`asset_smoke_pass=true`，`interface_preflight_pass=true`，`training_ready=false`。
+此前每小时任务只维护状态，实验结束后未接下一步。现在服务器顺序推进器已验证自动进入后续轮次，继续研究修复；独立发布器按步骤交接与每小时核查更新固定私有网页。实际会话、恢复和限制见 [运行说明](../docs/OPERATIONS.md)。
 
-1. 杯间材料相交尚未解决。
-2. 官方当前 reference 与 runtime 的接触矩原点为 link/body；本资产 COM 偏移约 84 mm，需要统一物理约定。
-3. 官方 loader 忽略 unknown contact sidecar，零占位不能当 GT 接触负例。
-4. 尚无训练 checkpoint、恢复验证或真实策略 rollout。
+GitHub 保存经筛选的源代码快照和本摘要，不包含原始数据、媒体、权重、checkpoint、原始 notes 或凭证。这里的进度是发布时快照，实时推进以[固定结果页](https://v2d-track3-results-20261015.sharp-spice-1328.chatgpt.site/)和服务器 notes 为准。
 
-## 运行与网页
-
-服务器每小时维护 agent 已实际成功发布至少两轮；会继续核查 tmux/Docker 与落盘结果，更新服务器 notes 和原有私有网页。GitHub 保存经筛选的源代码与进度快照，不包含原始运行记录和媒体。
-
-[固定结果页（保持原访问范围）](https://v2d-track3-results-20261015.sharp-spice-1328.chatgpt.site/)
-
-机器可读摘要：[status.json](status.json)。流程与下一步见 [PIPELINE](../docs/PIPELINE.md)。
+机器摘要：[status.json](status.json)。`training_ready=false`、`submission_ready=false`。

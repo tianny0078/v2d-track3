@@ -1,7 +1,22 @@
 {
-  "exported_utc": "2026-10-16T08:11:03.732777+00:00",
+  "exported_utc": "2026-10-16T18:26:01.094227+00:00",
   "scope": "Own Python source and four static page templates only",
   "files": [
+    {
+      "path": "scripts/agent_baseline_probe.py",
+      "sha256": "91086cf22bcc9188afd298695560f25227b14cce9e0c6dfe09a828c517833d96",
+      "bytes": 11879
+    },
+    {
+      "path": "scripts/agent_baseline_probe_audit.py",
+      "sha256": "bc2835c8442c41e9f586c75d08275717c3ef2dd1863c7c348fc7b452c016e012",
+      "bytes": 15801
+    },
+    {
+      "path": "scripts/agent_baseline_probe_launch.py",
+      "sha256": "a17ffabdc6662c5c22073e942973b625b7c207b0788cca3093d7f648c2027832",
+      "bytes": 1644
+    },
     {
       "path": "scripts/agent_cup_audit.py",
       "sha256": "9e724938a49e6793015780a0b4bce25dec5c6bd7fdc4e2431c960bc20cf469eb",
@@ -68,6 +83,56 @@
       "bytes": 15593
     },
     {
+      "path": "scripts/agent_hand_table_audit.py",
+      "sha256": "1b7274738880fdcd0718c3626f08ca264b38bcf222a66f44127dff8354334c3b",
+      "bytes": 7199
+    },
+    {
+      "path": "scripts/agent_hand_table_joint_fit.py",
+      "sha256": "ce7d6bfa6b106b82016453f1e93fd303a4ca230620fa02b1bd1275a1e3f9eb9e",
+      "bytes": 16040
+    },
+    {
+      "path": "scripts/agent_hand_table_joint_fit_v2.py",
+      "sha256": "7313c0fb0989bcb6099b8d051f986be81d6d9dd0c14d61907c099a4c10bc36dd",
+      "bytes": 16568
+    },
+    {
+      "path": "scripts/agent_hand_table_joint_launch.py",
+      "sha256": "3eb2d0f18fa90c60e25332920fe1c6784e0f30e8c9d51433629a30015ba38b72",
+      "bytes": 1621
+    },
+    {
+      "path": "scripts/agent_hand_table_joint_physics.py",
+      "sha256": "122d1ed4e7549eae63cc0a0aaf1ffd512a593502737ecb5c63f49263c2e9d917",
+      "bytes": 8105
+    },
+    {
+      "path": "scripts/agent_hand_table_joint_physics_launch.py",
+      "sha256": "d4257efb07e7ada313ac9c2d4e672aea0f881f7f335456d5fd803b89f124d243",
+      "bytes": 1673
+    },
+    {
+      "path": "scripts/agent_hand_table_joint_v2_launch.py",
+      "sha256": "3adb30c39a7538a49615cc709e85ad5d2f29e12ff7b89e33981c62f2f8f0d16a",
+      "bytes": 1651
+    },
+    {
+      "path": "scripts/agent_hand_table_launch.py",
+      "sha256": "dd77ad32ac7d49167d91b4bd4b7c6dfbda2cdcf5b83d5e560cc561bffb3ef886",
+      "bytes": 1605
+    },
+    {
+      "path": "scripts/agent_hand_table_raster.py",
+      "sha256": "6f97a1c9e191ceb7b1dfe41846ccb52374241b4845fa764002cc2173ead2ad68",
+      "bytes": 1135
+    },
+    {
+      "path": "scripts/agent_hand_table_reconcile.py",
+      "sha256": "1864f6d38335072f3efab5da22a138939a006c81931b3e04197d7cbb26dbb4f4",
+      "bytes": 14187
+    },
+    {
       "path": "scripts/agent_reference_audit.py",
       "sha256": "c9190c107cd49b144e6f2069ee2751630f317fe660a7e03f4a490ad26642386a",
       "bytes": 4388
@@ -83,9 +148,54 @@
       "bytes": 15626
     },
     {
+      "path": "scripts/agent_scene_contact_attribution.py",
+      "sha256": "d38f4fd0931a34f12814b2ddd8474b7ce0cba025eec19edc0646860793395bc2",
+      "bytes": 10967
+    },
+    {
+      "path": "scripts/agent_scene_contact_audit.py",
+      "sha256": "69f60845b55e73826fd537b3552358b7cf84f2e3e6b65f115dd94d6f507193c8",
+      "bytes": 5230
+    },
+    {
+      "path": "scripts/agent_scene_contact_launch.py",
+      "sha256": "2a73a72c911197d87de271486c04159649f47f445f6f78702d5db0212cb53ba9",
+      "bytes": 1755
+    },
+    {
+      "path": "scripts/agent_scene_finite_launch.py",
+      "sha256": "96acacd5c30e93fbbce62f395175745be1b4f2d009ac5e0fc441fc2f9bee997d",
+      "bytes": 1623
+    },
+    {
+      "path": "scripts/agent_scene_finite_table.py",
+      "sha256": "c2d257996822f4cc20d43703e59ce30963a25eb73692bfdc568cfc530e043f75",
+      "bytes": 10939
+    },
+    {
+      "path": "scripts/agent_wrench_semantics_audit.py",
+      "sha256": "b780d155e091e2d0a0a6453f2ab7e156de2a8776907d8bb08f88dd0d38c70840",
+      "bytes": 4746
+    },
+    {
+      "path": "scripts/agent_wrench_semantics_launch.py",
+      "sha256": "3551e10ba9451538eff17cff682a1757480f4d09bcdb55ed2feaa978f92eb279",
+      "bytes": 1725
+    },
+    {
+      "path": "scripts/agent_wrench_semantics_probe.py",
+      "sha256": "e1982fcfe6ff0649012f6c3d90641fb263a248060c026d3f48b6eea2c30cebc0",
+      "bytes": 16341
+    },
+    {
       "path": "scripts/align_hand_depth.py",
       "sha256": "447bac0bddc13f78779ade922ffbb4b5aec739ba55d40cce67209124edba6ed9",
       "bytes": 5436
+    },
+    {
+      "path": "scripts/audit_track3_masked_physics.py",
+      "sha256": "ca2dfd2ea9d3c3d607b3aa502d72157fcaf7066868b8413aed5b2ff122a46e03",
+      "bytes": 3594
     },
     {
       "path": "scripts/audit_track3_runtime.py",
@@ -99,8 +209,8 @@
     },
     {
       "path": "scripts/build_track3_results_site.py",
-      "sha256": "271dac26c0e1ae3d8d05e70cfd01d2d17657989cff954079723ce1cba2045bf5",
-      "bytes": 10356
+      "sha256": "c56ca7079e0d51db19ef39d846fe164599f4bc469908741d6f31e25cdd73eea8",
+      "bytes": 10528
     },
     {
       "path": "scripts/check_flashchord_interfaces.py",
@@ -116,6 +226,11 @@
       "path": "scripts/check_hand_surface_depth.py",
       "sha256": "036754e1f0e9fb8f82a07642ca4384ef7fc586d11e4558e31aa29fb08ab079d6",
       "bytes": 6690
+    },
+    {
+      "path": "scripts/check_kaggle_track3_entry.py",
+      "sha256": "9218f40eef5f7256c372498d65445ed4ea4239c900b3bc79f324fc7f23e74783",
+      "bytes": 2915
     },
     {
       "path": "scripts/check_metric_scene.py",
@@ -283,14 +398,49 @@
       "bytes": 1622
     },
     {
+      "path": "scripts/launch_track3_continuation.py",
+      "sha256": "c7e05f3229edee539aba38d2e7611863a9815345d9665970c3669e4200b2f7e1",
+      "bytes": 2193
+    },
+    {
       "path": "scripts/launch_track3_hourly_agent.py",
       "sha256": "f49536b24b9f2407f1eb869814a620759934ae8a77a11f72a0e719d7cc40b1fc",
       "bytes": 1988
     },
     {
+      "path": "scripts/launch_track3_masked_com.py",
+      "sha256": "36c5a8a4fdf00f761444cc34663731a071fc9b628ebefbcb8c884e0719907e5a",
+      "bytes": 1285
+    },
+    {
+      "path": "scripts/launch_track3_masked_contact.py",
+      "sha256": "57b829602ca5015b295d93d633db2af0932f33f632b22899cddcd5248c428ed6",
+      "bytes": 1303
+    },
+    {
+      "path": "scripts/launch_track3_masked_learner.py",
+      "sha256": "8c7a2dcdef9cb6348e635e855f6fcd5e9b1c6960d61b35e5435070a3c77548b0",
+      "bytes": 1823
+    },
+    {
+      "path": "scripts/launch_track3_masked_objective.py",
+      "sha256": "c2536e6c2e588ce9be48e893c3722478345e71d803f474deb4ff8ade9623763e",
+      "bytes": 1327
+    },
+    {
+      "path": "scripts/launch_track3_masked_physics.py",
+      "sha256": "12bdd78e940555b6dd9eed0b4a1af63f1f279ce534431117902291cd459c809e",
+      "bytes": 1314
+    },
+    {
+      "path": "scripts/launch_track3_reference_alignment.py",
+      "sha256": "55aef0cdf459aa3cc669dfabb994d4b4ac8baa5e3f98b38d82635cf5a326a3d2",
+      "bytes": 1361
+    },
+    {
       "path": "scripts/launch_track3_step.py",
-      "sha256": "e754102342e8e01b9ed0c809302262fbe03349b93613dbb1d6662579c02b323a",
-      "bytes": 3069
+      "sha256": "6f70cc55490cbdcf758d85115bbfda8cedab97b46fb42f9e1bc78c06b512e5f8",
+      "bytes": 3767
     },
     {
       "path": "scripts/launch_triposr_sample.py",
@@ -304,8 +454,13 @@
     },
     {
       "path": "scripts/package_track3_offline.py",
-      "sha256": "0c1ca29048f925b1d8a29c6504bedac8cb555868fedbd0f7f2821abf982622f0",
-      "bytes": 2626
+      "sha256": "3ee94e5b621bf5a50d6a15d080a01c993183082c66db33e39aa2af8d057c24b8",
+      "bytes": 2696
+    },
+    {
+      "path": "scripts/plan_track3_initial_unobserved_hand.py",
+      "sha256": "53c451a93a1ee9d1ddf51556c517fcce3fd685b4cf63ef8cc9c4009dcae5c149",
+      "bytes": 14546
     },
     {
       "path": "scripts/plot_contact_wrench_probe.py",
@@ -331,6 +486,11 @@
       "path": "scripts/prepare_foundation_stereo.py",
       "sha256": "27072a6b47a4f4ee0f6573c1d228d2ae3bf7aba294b79308f28c1bfb16ca84d4",
       "bytes": 3699
+    },
+    {
+      "path": "scripts/prepare_kaggle_entry_check.py",
+      "sha256": "9f9e8bc98dc72ae87dae2cb91713c42ffa204dba5ceeb1ed9985a0228c7a20c5",
+      "bytes": 2119
     },
     {
       "path": "scripts/prepare_official_retarget_source.py",
@@ -448,9 +608,14 @@
       "bytes": 7997
     },
     {
+      "path": "scripts/run_track3_continuation.py",
+      "sha256": "2df758fb7843713ecd34ce938e75869e0dbac890b3fe1cc52fe4bb2cd3127cc2",
+      "bytes": 7533
+    },
+    {
       "path": "scripts/run_track3_hourly_agent.py",
-      "sha256": "e7ca32f70066cd41af3fd8bc25c866b1292dd0e8b6adf31e1ecf2609e6022093",
-      "bytes": 3670
+      "sha256": "0fe0cc694c6dc8786db12806b675f8f5313910cc326c2cee7b47fd5a10dc32a3",
+      "bytes": 4136
     },
     {
       "path": "scripts/run_triposr_sample.py",
@@ -483,9 +648,39 @@
       "bytes": 6209
     },
     {
+      "path": "scripts/track3_com_reference.py",
+      "sha256": "09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485",
+      "bytes": 2470
+    },
+    {
+      "path": "scripts/track3_masked_contact.py",
+      "sha256": "b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd",
+      "bytes": 7813
+    },
+    {
+      "path": "scripts/track3_masked_objective.py",
+      "sha256": "4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd",
+      "bytes": 18443
+    },
+    {
+      "path": "scripts/track3_reference_alignment.py",
+      "sha256": "8d92325add74783edbd1513d533b7c917a532f68570c30ec84268fd4800e6c96",
+      "bytes": 1992
+    },
+    {
+      "path": "scripts/track3_wrench_adapter.py",
+      "sha256": "298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f",
+      "bytes": 6530
+    },
+    {
+      "path": "scripts/train_track3_masked.py",
+      "sha256": "4b90238706f7b20fcbd065c507892e209f7933ccae537f8e3887b3a9793d6565",
+      "bytes": 6520
+    },
+    {
       "path": "scripts/update_track3_site_progress.py",
-      "sha256": "7937e7a9466a8c37fb22cdbd2a04588e91f6ec03948ac4eac8288efd9b8b632d",
-      "bytes": 6574
+      "sha256": "5d9434313b87b4c318f6d0f7ae70b2a0f311407e675cd14c94879d4d367d226b",
+      "bytes": 12342
     },
     {
       "path": "scripts/validate_track3_sample.py",
@@ -493,9 +688,34 @@
       "bytes": 10648
     },
     {
+      "path": "scripts/verify_track3_masked_com.py",
+      "sha256": "ca884e4f8babc2ee7828b042ae27409024e92ea4f6a1547b5ac39fe5e84bdde8",
+      "bytes": 12295
+    },
+    {
+      "path": "scripts/verify_track3_masked_contact.py",
+      "sha256": "2608cb17a231dedbdaf767abfd301db0615fe62a53dd565a1f6419d295a4daaa",
+      "bytes": 4237
+    },
+    {
+      "path": "scripts/verify_track3_masked_objective.py",
+      "sha256": "7aa4a13cd97487a0615d04f23e3291f5f542cb3d69dcb61031a455fbe959a014",
+      "bytes": 10336
+    },
+    {
+      "path": "scripts/verify_track3_masked_physics.py",
+      "sha256": "6bc103ac0ea469f0f23ad64fafe1e7de5e13b4111204f9941013bfdaa43b326c",
+      "bytes": 6903
+    },
+    {
+      "path": "scripts/verify_track3_reference_alignment.py",
+      "sha256": "f58ab7c1433750b2d3d123c24900b0ab07580399b3b76146499b3b0109ac604f",
+      "bytes": 3685
+    },
+    {
       "path": "sites/track3-results-20261015/dist/index.html",
-      "sha256": "a92af5bcda47b694440dbc03aee7f63193c700cf9ea06b65a600f314eb09fd57",
-      "bytes": 15960
+      "sha256": "ba8300b2425fdf12570d60fd5a3a87ee79d4ad7ec421b0c1df860f758c613a4e",
+      "bytes": 17341
     },
     {
       "path": "sites/track3-results-20261015/dist/styles.css",
@@ -509,8 +729,8 @@
     },
     {
       "path": "sites/track3-results-20261015/dist/progress.js",
-      "sha256": "7622d462fafd64f32d96fe667ebcd0701d9436c7171a1f387555dd8412e390aa",
-      "bytes": 3106
+      "sha256": "a6c058a4b47edd45121ee47836ea69742043ba4152f7a073cd43163146642e92",
+      "bytes": 3546
     }
   ]
 }

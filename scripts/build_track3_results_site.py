@@ -77,7 +77,9 @@ def main():
         ('agent_cup_pose_refinement/previews/failure_comparison_000113.jpg','cup-table-penetration-failure.jpg'),
         ('agent_cup_pose_supported/previews/comparison_000113.jpg','cup-table-supported.jpg'),
         ('contact_wrench_probe/contact_wrench_uncertainty.png','contact_wrench_uncertainty.png'),
-        ('contact_wrench_probe/contact_wrench_uncertainty.pdf','contact_wrench_uncertainty.pdf')]:
+        ('contact_wrench_probe/contact_wrench_uncertainty.pdf','contact_wrench_uncertainty.pdf'),
+        ('baseline_probe/policy_rollout_diagnostic.png','baseline_policy_rollout.png'),
+        ('baseline_probe/policy_rollout_diagnostic.pdf','baseline_policy_rollout.pdf')]:
         source=BASE/relative
         if source.exists():shutil.copyfile(source,ASSETS/filename)
     rows=[];sg=read('stereo_sequence/report.json');nn=read('foundation_stereo_sequence/report.json')
@@ -111,7 +113,7 @@ def main():
                     {'name':'手部重建与身份修复','detail':'233 个手实例；缺失手保持缺失；原始和修正结果均保留。'},
                     {'name':'深度 / 2D / 连续性折中','detail':'三档试验完成；中档 alpha 0.50 作为候选保留。'},
                     {'name':'双杯表面跟踪与 TSDF 融合','detail':'两杯各融合 137 帧；体积 checkpoint 已保存；输出局部网格。'}],
-          'next':['检查局部网格的漂移、碎片和缺口，完善自建物体几何。','将可见表面参考系注册到完整网格，建立可靠物体 6D 轨迹。','联合优化手物接触与碰撞，再进入策略训练和真实 rollout。']}
+          'next':['修正物体姿态、接触与碰撞，保留失败证据并完善几何。','接入COM与未知接触mask，继续验证参考和仿真接口。','用更充分的训练与真实rollout评估，再准备完整评分产物和提交。']}
     (ASSETS/'data.js').write_text('window.V2D_RESULTS='+json.dumps(data,ensure_ascii=False,separators=(',',':'))+';\n')
     (DIST/'downloads/results-summary.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     (ROOT/'notes/track3-fusion-quality.json').write_text(json.dumps({'state':'completed','meshes':meshes,'interpretation':'TSDF surfaces remain open. Programmatic hollow candidates are watertight, but geometry/pose quality has not passed.'},ensure_ascii=False,indent=2)+'\n')

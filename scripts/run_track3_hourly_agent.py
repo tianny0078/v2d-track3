@@ -11,6 +11,9 @@ import time
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/'notes/track3-hourly-agent-state.json'
 STOP=ROOT/'notes/track3-hourly-agent.stop'
+REQUEST=ROOT/'notes/track3-publication-request.json'
+def request_token():
+    return REQUEST.stat().st_mtime_ns if REQUEST.exists() else 0
 parser=argparse.ArgumentParser();parser.add_argument('--once',action='store_true');args=parser.parse_args()
 lock=(ROOT/'notes/.track3-hourly-agent.lock').open('a')
 try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -20,12 +23,16 @@ schema={'type':'object','properties':{'notes_updated':{'type':'boolean'},'site_p
         'required':['notes_updated','site_published','deployment_id','summary','needs_attention'],'additionalProperties':False}
 schemafile=ROOT/'notes/track3-hourly-result.schema.json';schemafile.write_text(json.dumps(schema)+'\n')
 prompt='执行 /home/tianyuan/projects/v2d/notes/track3-hourly-agent-instructions.md 中的每小时维护任务。先读取该文件，按它核查真实状态、更新notes并发布到既有私有进度网页。不要启动实验，不更改模型或安全设置，不输出任何凭证。'
+last_request_token=0
 while not STOP.exists():
     started=datetime.now(timezone.utc);stamp=started.strftime('%Y%m%dT%H%M%SZ')
+    current_request_token=request_token()
     next_run=started+timedelta(hours=1)
     state={'state':'running','started_utc':started.isoformat(),'next_run_utc':next_run.isoformat(),
            'interval_seconds':3600,'mechanism':'server tmux + Codex local agent with auto-review',
-           'policy':'workspace-write; no sandbox bypass; no raw tool transcripts retained'}
+           'policy':'workspace-write; no sandbox bypass; no raw tool transcripts retained',
+           'trigger':'step publication request' if current_request_token!=last_request_token else 'hourly schedule',
+           'publication_request_token':current_request_token}
     STATE.write_text(json.dumps(state,indent=2)+'\n')
     print('Hourly run started',stamp,flush=True)
     with tempfile.TemporaryDirectory(prefix='v2d-hourly-') as temp:
@@ -46,8 +53,9 @@ while not STOP.exists():
     state.update(state='waiting',last_result=summary,last_result_file=str(dest))
     STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(summary,ensure_ascii=False),flush=True)
+    last_request_token=current_request_token
     if args.once:break
-    while not STOP.exists() and datetime.now(timezone.utc)<next_run:
-        time.sleep(min(60,max(1,(next_run-datetime.now(timezone.utc)).total_seconds())))
+    while not STOP.exists() and datetime.now(timezone.utc)<next_run and request_token()==last_request_token:
+        time.sleep(min(15,max(1,(next_run-datetime.now(timezone.utc)).total_seconds())))
 if STOP.exists():
     state.update(state='stopped');STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n')

@@ -4,7 +4,7 @@ NVIDIA Video-to-Data Challenge Track 3 的单轨迹重建、接触参考与机�
 
 当前先完成公开 `episode_000011` 的完整链路，再处理评分数据。执行优先级为 Track 3 → Track 2 → Track 1；本仓库只包含 Track 3 工作。
 
-**当前尚未完成策略训练或真实策略 rollout。** 公开 episode 11 不在 20 段评分名单中；接口预检通过不代表任务成功。最新结果见 [进度摘要](notes/STATUS.md)。
+**已完成短训练、checkpoint 恢复和真实策略 rollout；本地成功率为 0，完整物理参考仍未通过。** 公开 episode 11 不在 20 段评分名单中；80 步诊断不能代表充分训练性能或 Kaggle 得分。最新结果见 [进度摘要](notes/STATUS.md)。
 
 | 已实现 | 当前证据 |
 |---|---|
@@ -16,7 +16,7 @@ NVIDIA Video-to-Data Challenge Track 3 的单轨迹重建、接触参考与机�
 | CHORD 接触参考 | 实际 GPU wrench 内核与距离/摩擦敏感性分析；几何能力不等于测得的真实力 |
 | 官方参考/场景接口 | 137 帧 parquet 加载与 CPU 单场景编译通过；训练门槛仍未通过 |
 
-待解决的问题包括杯间材料相交、未知接触的表示，以及 link 原点与 COM 的 wrench 约定。
+当前在修正手掌穿桌、杯间材料相交并接入项目侧 COM/unknown 奖励。已通过双 world GPU 物理与奖励验证，learner 入口仍在验证。服务器顺序推进器完成一轮后自动接续，步骤交接触发网页发布；每小时仍独立核查。
 
 ## 使用
 
@@ -41,6 +41,6 @@ python3 scripts/bootstrap_track3_workspace.py --init-runtime-dirs
 
 服务器实验工作区与 GitHub 提交目录分开维护。使用 `scripts/export_track3_repository.py` 显式导出代码；该脚本不会提交、推送或删除文件。
 
-数据、模型权重、MANO、checkpoint、原始/生成媒体、网站访问凭证与服务器认证配置不随仓库发布。第三方代码通过固定版本另行获取，见 [来源](docs/PROVENANCE.md)。
+数据、模型权重、MANO、checkpoint、原始/生成媒体、网站访问凭证与服务器认证配置不随仓库发布。第三方库通过固定版本另行获取；项目侧衍生模块保留原声明，见 [来源](docs/PROVENANCE.md) 和 [第三方说明](THIRD_PARTY_NOTICES.md)。
 
 挑战说明：[NVIDIA V2D Challenge](https://nvidia-isaac.github.io/video_to_data/v2d_challenge/)。

@@ -6,7 +6,7 @@ from urllib.parse import urlsplit, unquote
 
 ROOT=Path(__file__).resolve().parents[1];DIST=ROOT/'sites/track3-results-20261015/dist'
 archive=DIST/'downloads/track3-results-offline.zip'
-readme='V2D Track 3 实验结果快照\n\n解压整个文件夹后，用现代浏览器打开 index.html。\n图像、摘要、PLY 下载和三维网格使用随包资源，无需启动服务器。\n三维预览需要浏览器支持 WebGL 2；原始 PLY 也可用三维软件打开。\n这是公开 episode 11 的实验快照；局部网格未封闭，未完成评测提交或策略训练。\n'
+readme='V2D Track 3 实验结果快照\n\n解压整个文件夹后，用现代浏览器打开 index.html。\n图像、摘要、PLY 下载和三维网格使用随包资源，无需启动服务器。\n三维预览需要浏览器支持 WebGL 2；原始 PLY 也可用三维软件打开。\n这是公开 episode 11 的实验快照；完整物理参考质量未通过。小规模诊断训练与真实策略执行已完成，任务成功率0；未完成评测提交。\n'
 with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
     for path in sorted(DIST.rglob('*')):
         if path.is_file() and path!=archive:z.write(path,str(path.relative_to(DIST)))
