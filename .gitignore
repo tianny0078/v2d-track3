@@ -1,0 +1,57 @@
+# Local environments, third-party source and runtime artifacts
+.deps/
+vendor/
+toolkit/
+data/
+weights/
+outputs/
+logs/
+repos/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+.venv/
+.env
+.env.*
+.aws/
+.ssh/
+.codex/
+.agents/
+.DS_Store
+
+# Learned weights, licensed models, data and experiment checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.pkl
+*.onnx
+*.npz
+*.npy
+*.parquet
+*.mp4
+*.avi
+*.vrs
+*.ply
+*.obj
+*.glb
+*.zip
+*.tar.gz
+*.part
+
+# Hosting identity, site-generated data and deployment bundles
+sites/**/.openai/
+sites/**/dist/assets/
+sites/**/dist/downloads/
+
+# Server notes are private runtime records; publish only curated summaries
+notes/*
+!notes/STATUS.md
+!notes/status.json
+
+# Generic credentials and machine-specific authentication
+*credentials*.json
+*.pem
+id_rsa*
+id_ed25519*

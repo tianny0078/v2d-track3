@@ -1,0 +1,84 @@
+{
+  "updated_utc": "2026-10-16T08:07:11.188373+00:00",
+  "updated_los_angeles": "2026-10-16T01:07:11.188373-07:00",
+  "active_track": 3,
+  "episode": "episode_000011",
+  "scoring_episode": false,
+  "sequence_frames": 137,
+  "geometry": {
+    "table_nonpenetration_hard_pass": true,
+    "geometric_reference_ready": false,
+    "heldout_silhouette_iou_median": 0.9364180290546087,
+    "cup_material_conflict_resolved": false
+  },
+  "ik_initializer": {
+    "visible_hand_instances": 233,
+    "fingertip_fit_p50_p95_m": [
+      0.0014654769950172882,
+      0.004881883992254343
+    ],
+    "joint_range_violations": 0,
+    "contact_ready": false
+  },
+  "compound_collision": {
+    "asset_smoke_pass": true,
+    "newton_CPU_steps": 1000,
+    "newton_CPU_rest_pass": true,
+    "urdf_import_compile_pass": true,
+    "reconstruction_reference_pass": false,
+    "GPU_collision_tested": false
+  },
+  "reference_preflight": {
+    "interface_preflight_pass": true,
+    "load_reference_pass": true,
+    "scene_build_pass": true,
+    "solver_compile_pass": true,
+    "wrench_COM_contract_pass": false,
+    "contact_unknown_schema_supported": false,
+    "training_ready": false
+  },
+  "contact_wrench_probe": {
+    "basis_directions_per_object": 512,
+    "friction_coefficients": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "threshold_sensitivity": [
+      {
+        "threshold_m": 0.005,
+        "active_link_count": 1304,
+        "present_hand_object_cells_with_proximity": 233,
+        "present_hand_object_cells": 466,
+        "unknown_missing_hand_object_cells": 82,
+        "frames_with_any_proximity": 95
+      },
+      {
+        "threshold_m": 0.01,
+        "active_link_count": 1687,
+        "present_hand_object_cells_with_proximity": 239,
+        "present_hand_object_cells": 466,
+        "unknown_missing_hand_object_cells": 82,
+        "frames_with_any_proximity": 95
+      },
+      {
+        "threshold_m": 0.02,
+        "active_link_count": 2408,
+        "present_hand_object_cells_with_proximity": 243,
+        "present_hand_object_cells": 466,
+        "unknown_missing_hand_object_cells": 82,
+        "frames_with_any_proximity": 95
+      }
+    ],
+    "force_measurements_available": false
+  },
+  "policy_training_started": false,
+  "real_policy_rollout_completed": false,
+  "batch_processing_started": false,
+  "next_steps": [
+    "Make link/body versus COM wrench origin explicit on both reference and runtime paths.",
+    "Represent unknown contacts in the training objective.",
+    "Resolve object material intersections and verify a physical reference.",
+    "Run bounded train/save/resume/evaluate before processing all scoring episodes."
+  ]
+}

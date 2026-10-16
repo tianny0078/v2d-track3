@@ -1,0 +1,23 @@
+"""Offline audit of completed collision smoke artifacts; performs no simulation."""
+import json,hashlib
+from pathlib import Path
+import numpy as np
+from scipy.spatial.transform import Rotation
+from agent_cup_collision_smoke import ROOT,OUT,SOURCE,NAMES,save,now
+
+report=json.loads((OUT/'report.json').read_text());source=json.loads((SOURCE/'report.json').read_text());rows=[]
+for tag,candidate in report['candidates'].items():
+    static=json.loads((OUT/tag/'static_queries.json').read_text());sweep=static['coaxial_sweep'];flags=[row['cup_penetrating_contacts_over_10um']==0 for row in sweep]
+    reentry=any(flags[i] and not flags[i-1] for i in range(1,len(flags)))
+    row={'candidate':tag,'sample_spacing_m':.002,'penetration_threshold_m':.00001,'clear_interval_reentry_detected':reentry,'all_parts_convex_watertight_positive':all(q['all_parts_convex'] and q['all_parts_watertight'] and q['all_parts_positive_volume'] for q in candidate['geometry_quality']),'maximum_sampled_clear_insertion_m':static['maximum_sampled_nonpenetrating_insertion_m'],'final_nested_insertion_m':source['objects'][NAMES[0]]['shape']['height_m']-candidate['nesting_drop']['final']['body_pos'][1][2]}
+    row['native_smoke_gate']=bool(not reentry and row['all_parts_convex_watertight_positive'] and all(candidate[k]['finite_state'] and candidate[k]['simulation_seconds']>1.99 and candidate[k]['settled_gate'] for k in ['table_rest','nesting_drop']) and all(static[k] for k in ['mouth_allows_80mm_coaxial_insertion','lateral_conflict_detected','tilt_conflict_detected']))
+    rows.append(row)
+backend=json.loads((OUT/'newton_backend.json').read_text());trace=backend['trace'];q=np.asarray(trace[-1]['newton_body_q']);tilts=[];gaps=[]
+for i,name in enumerate(NAMES):
+    s=source['objects'][name]['shape'];R=Rotation.from_quat(q[i,3:]).as_matrix();local_n=R.T@np.array([0,0,1]);rad=np.linalg.norm(local_n[:2]);gap=q[i,2]+min(-s['bottom_outer_radius_m']*rad,s['height_m']*local_n[2]-(s['bottom_outer_radius_m']+s['taper_dr_dz']*s['height_m'])*rad)
+    gaps.append(float(gap));tilts.append(float(np.degrees(np.arccos(np.clip(local_n[2],-1,1)))))
+ngate=bool(backend['actual_newton_solver_steps']==1000 and backend['finite_state'] and backend['rest_gate'] and min(gaps)>-.0005 and max(tilts)<5)
+audit={'completed_utc':now(),'native_candidates':rows,'native_all_gate':all(x['native_smoke_gate'] for x in rows),'newton_solver_gate':ngate,'newton_last_sample_time_s':trace[-1]['time'],'newton_last_sample_table_clearance_m':gaps,'newton_last_sample_tilt_deg':tilts,'newton_collision_gate':all(backend['native_collision_queries'][k] for k in ['mouth_allows_80mm_coaxial_insertion','lateral_conflict_detected','tilt_conflict_detected']),'urdf_import_gate':report.get('urdf',{}).get('import_compile_gate',False),'reconstruction_reference_pass':False,'limits':['Idealized asset tests only; no hand or reconstructed trajectory replay.','Native peak penetration is sampled every 20 ms, not a strict all-step bound.','Newton CPU SolverMuJoCo native contacts tested; standard Newton collision and GPU untested.','3 mm base is a full planar slab; actual underside, feet/markers, inner fillet and wall thickness remain unmeasured.','Mass fixed at 0.12 kg for all wall candidates, so implied material density differs; this is a controlled assumption, not identified mass.','Reported insertion limits use a 2 mm sweep with 10 micrometer contact penetration threshold; do not interpret as calibrated tolerances.']}
+save(OUT/'audit.json',audit);report['audit']=audit;report['asset_smoke_pass']=bool(audit['native_all_gate'] and ngate and audit['newton_collision_gate'] and audit['urdf_import_gate']);report['final_scripts_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in ROOT.glob('scripts/agent_cup_collision_*.py')};save(OUT/'report.json',report)
+note=ROOT/'notes/track3-agent-cup-collision-job.json';job=json.loads(note.read_text());job.update(state='completed',updated_utc=now(),exit_code=int(Path(job['exit_file']).read_text().strip()),asset_smoke_pass=report['asset_smoke_pass'],newton_state=report['newton']['state'],reconstruction_reference_pass=False,urdf_import_gate=audit['urdf_import_gate'],resume_newton='python3 scripts/agent_cup_collision_launch.py',resume_urdf='python3 scripts/agent_cup_collision_launch.py --urdf-only',resume='python3 scripts/agent_cup_collision_launch.py --urdf-only' if not audit['urdf_import_gate'] else 'python3 scripts/agent_cup_collision_launch.py',total_compute_seconds=report['elapsed_seconds']+report['newton_repair_elapsed_seconds']+report.get('urdf',{}).get('elapsed_seconds',0));save(note,job)
+print(json.dumps(audit,indent=2))

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="V2D Track 3 公开样本的离线重建结果：关键帧、立体深度、手部轨迹与可交互的双杯局部网格。">
+  <meta name="color-scheme" content="light"><title>Track 3 · 全链路任务进度</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%23263fc5'/%3E%3Ctext x='32' y='43' text-anchor='middle' fill='white' font-family='sans-serif' font-size='32' font-weight='bold'%3E03%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css"><script src="assets/data.js" defer></script><script src="assets/progress-data.js?v=20261016002001" defer></script><script src="progress.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到结果</a>
+<header class="topbar"><div class="wrap bar">
+  <a class="brand" href="#main"><span class="brand-icon">03</span><span>V2D <b>实验记录</b></span></a>
+  <nav aria-label="页内导航"><a href="#overview">总进度</a><a href="#frames">关键帧</a><a href="#geometry">三维几何</a><a href="#live-progress">步骤详情</a></nav>
+  <a class="button small" href="downloads/track3-results-offline.zip" download>下载本地版 <span aria-hidden="true">↗</span></a>
+</div></header>
+<main id="main" class="wrap">
+  <section id="overview" class="task-overview" aria-labelledby="overview-title">
+    <div class="overview-heading"><div><div class="kicker">TRACK 3 / 从单轨迹到全量数据</div><h1 id="overview-title">全链路任务进度</h1></div><div class="overview-count"><strong id="overall-count">— / —</strong><span>步骤已完成</span></div></div>
+    <div class="progress-track"><progress id="overall-progress" max="16" value="0" aria-label="已完成任务步骤"></progress><span id="overall-percent">0%</span></div>
+    <div id="overview-steps" class="overview-steps" aria-label="全部任务步骤"></div>
+    <div class="overview-current"><span class="pill">当前</span><strong id="overview-current-name">读取进度</strong><span id="overview-updated"></span><a href="#live-progress">查看结果与详情 ↓</a></div>
+    <p class="caption">进度按已完成步骤计数，表示流程覆盖，不代表工作量或结果质量。当前只推进 Track 3；单段通过后才启动全量处理。</p>
+  </section>
+
+  <section class="intro">
+    <div class="eyebrow"><span class="dot"></span> TRACK 3 / OFFLINE RECONSTRUCTION</div>
+    <div class="intro-row"><div><h1>137 帧视频，<br><span>重建到哪一步了？</span></h1><p class="lead">把实际结果放在一起：双杯分割、立体深度、手部重建，以及多帧融合得到的局部表面。</p></div>
+      <div class="snapshot"><span class="label">实验快照</span><strong id="updated">正在载入</strong><span>公开样本 episode_000011</span><a href="downloads/results-summary.json" download>下载结果摘要 JSON <span aria-hidden="true">↗</span></a></div></div>
+    <div class="scope-note"><span class="pill">样本验证</span> 本页展示公开 episode 11；尚未完成 20 段评分数据、策略训练或真实 rollout。</div>
+    <div class="stats">
+      <div class="stat"><span>处理帧数</span><strong>137<small>帧</small></strong><p>三路同步视频，同一校准几何</p></div>
+      <div class="stat"><span>手部重建实例</span><strong>233<small>个</small></strong><p>96 帧双手 · 41 帧单手</p></div>
+      <div class="stat"><span>立体有效比例 · 中位数</span><strong id="stereo-stat">79.7<small>%</small></strong><p>通过左右一致性检查</p></div>
+      <div class="stat"><span>融合表面</span><strong>2<small>个</small></strong><p>蓝杯与米色杯，均为未封闭局部网格</p></div>
+    </div>
+  </section>
+
+  <section id="live-progress" class="section">
+    <div class="section-head"><div><div class="kicker">CURRENT / 持续实验进度</div><h2 id="current-stage">正在载入进度</h2></div><span class="pill" id="current-state">读取快照</span></div>
+    <div class="panel progress-snapshot"><p id="current-detail"></p><p class="subtle" id="progress-time"></p><p id="current-strategy"></p><div id="live-milestones" class="milestone-grid"></div><p class="caption" id="live-limitations"></p><a href="downloads/progress-summary.json" download>下载当前进度摘要 JSON ↗</a><p class="caption">本页在可验证步骤结束后更新。刷新可查看最新发布快照；训练、重建与真实策略执行的状态分别记录。</p></div>
+    <div class="section-head"><div><h2>最近完成与正在运行的实验</h2></div><span class="subtle" id="hourly-update-label"></span></div><div id="experiment-list" class="milestone-grid"></div>
+    <div class="panel progress-snapshot"><h3>SAM3D 实际生成与注册对照</h3><p>复用服务器已有权重，输入标定双目点图。两个网格均封闭，杯口、内腔和标记点可见。</p><a href="assets/sam3d-cups.jpg" target="_blank" rel="noopener"><img src="assets/sam3d-cups.jpg" style="display:block;width:100%;height:auto" alt="SAM3D双杯各三视角渲染，保留杯腔及外侧标记点" loading="lazy"></a><details><summary>查看初始变换与度量注册后的首帧投影</summary><p>下面是拟合首帧的诊断，不是留出精度：轮廓改善，但蓝杯深度大误差及米杯悬空仍未解决。</p><div class="image-grid"><a href="assets/sam3d-initial-overlay.jpg" target="_blank" rel="noopener"><img src="assets/sam3d-initial-overlay.jpg" alt="SAM3D初始双杯投影，轮廓和朝向偏差明显" loading="lazy"></a><a href="assets/sam3d-blue-registered.jpg" target="_blank" rel="noopener"><img src="assets/sam3d-blue-registered.jpg" alt="蓝杯首帧度量注册后的投影，仍有形状与深度问题" loading="lazy"></a><a href="assets/sam3d-beige-registered.jpg" target="_blank" rel="noopener"><img src="assets/sam3d-beige-registered.jpg" alt="米杯首帧度量注册后的投影，桌面悬空检查未通过" loading="lazy"></a></div></details></div>
+    <div class="panel progress-snapshot"><h3>代码生成的杯壳：材料封闭，杯口与空腔保留</h3><p>参考 AgentSTAR 的代码几何与渲染对照。尺寸由标定双目约束；1.5 / 3 / 5 mm 壁厚为候选假设，尚未通过位姿与嵌套验证。</p><a href="assets/cup_cross_sections.png" target="_blank" rel="noopener"><img src="assets/cup_cross_sections.png" style="display:block;width:100%;height:auto" alt="空心杯轴向截面，展示三种假设壁厚、杯底和开放杯口" loading="lazy"></a><p class="caption">在三维几何区域切换空心候选，可以检查内腔并下载 PLY。</p></div>
+  </section>
+
+  <section class="section" id="contact-diagnostics">
+    <div class="section-head"><div><div class="kicker">CONTACT / 不确定性与物理约束</div><h2>先检查接触参考，再用于训练</h2></div></div>
+    <div class="panel progress-snapshot"><h3>桌面非穿透已修正，双杯相交仍需处理</h3><p>137 帧通过桌面硬约束；24 / 25 时间窗口接受。杯子抬起时不会被吸附回桌面。末态杯间材料交叉约 9.15%，当前仍未通过完整物理参考检查。</p><details><summary>查看第 113 帧桌面约束前后对照</summary><a href="assets/cup-table-supported.jpg" target="_blank" rel="noopener"><img src="assets/cup-table-supported.jpg" style="display:block;width:100%;height:auto" alt="第113帧加入桌面非穿透和时间窗口约束的前后渲染对照" loading="lazy"></a></details><h3>机器人手 IK 初始化完成</h3><p>233 个可见手实例，指尖拟合中位 1.5 mm、P95 4.9 mm，关节越界 0。采用官方 Sharpa 运动学和位置权重；当前尚未验证接触优化、动力学或策略执行。</p></div>
+    <div class="panel progress-snapshot"><h3>CHORD 接触 / wrench 的实际 GPU 诊断</h3><p>共享 512 个六维方向，8 条摩擦锥边加法向，比较摩擦系数 0.1 / 0.3 / 0.6 与距离阈值 5 / 10 / 20 mm。邻近关节对计数随阈值从 1304 增至 2408，说明当前接触参考对几何误差敏感。</p><a href="assets/contact_wrench_uncertainty.png" target="_blank" rel="noopener"><img src="assets/contact_wrench_uncertainty.png" style="display:block;width:100%;height:auto" alt="三档接触阈值、三档摩擦系数的wrench能力曲线及观测手可用性" loading="lazy"></a><p class="caption">这是候选几何的接触能力，不是视频测得的真实力。物体穿透或错误法向可能虚增能力；缺失手保持未知。此参考尚未用于训练。<a href="assets/contact_wrench_uncertainty.pdf" target="_blank" rel="noopener">下载图表 PDF ↗</a></p></div>
+  </section>
+
+  <section id="frames" class="section">
+    <div class="section-head"><div><div class="kicker">01 / KEYFRAMES</div><h2>同一帧，直接对照</h2></div><div class="frame-controls" role="group" aria-label="选择关键帧"><button data-frame="0" aria-pressed="false">0 <span>初始</span></button><button data-frame="68" class="active" aria-pressed="true">68 <span>操作中</span></button><button data-frame="136" aria-pressed="false">136 <span>结束</span></button></div></div>
+    <div class="panel">
+      <div class="panel-toolbar"><div class="tabs" role="group" aria-label="对照类型"><button data-mode="depth" class="active" aria-pressed="true">立体深度</button><button data-mode="cups" aria-pressed="false">双杯分割</button><button data-mode="hands" aria-pressed="false">手部分割</button></div><span class="subtle" id="frame-label">FRAME 000068</span></div>
+      <div class="image-grid" id="image-grid"></div>
+      <div class="depth-legend" id="depth-legend"><span>0.25 m</span><span class="gradient" aria-hidden="true"></span><span>1.20 m</span><span class="legend-note"><i></i> 黑色：无有效深度</span></div>
+      <div class="coverage-line" id="coverage-line"></div>
+    </div>
+    <p class="caption" id="image-caption">显示范围为 0.25–1.20 m；覆盖率提高不等于深度准确率提高。点击图像可查看原图。</p>
+  </section>
+
+  <section id="geometry" class="section">
+    <div class="section-head"><div><div class="kicker">02 / OBSERVED GEOMETRY</div><h2>旋转看看，表面长什么样</h2></div><span class="pill amber">局部表面 · 未封闭</span></div>
+    <div class="geometry-layout">
+      <div class="viewer-panel">
+        <div class="viewer-toolbar"><div class="tabs" role="group" aria-label="物体"><button data-mesh="blue_cup" class="active" aria-pressed="true">蓝杯观测</button><button data-mesh="beige_cup" aria-pressed="false">米杯观测</button><button data-mesh="blue_cup_programmatic" aria-pressed="false">蓝杯空心候选</button><button data-mesh="beige_cup_programmatic" aria-pressed="false">米杯空心候选</button></div><button class="text-button" id="reset-view">重置视角 ↺</button></div>
+        <div class="canvas-wrap"><canvas id="mesh-canvas" tabindex="0" aria-label="可交互的融合网格，拖动或方向键旋转，滚轮缩放"></canvas><div id="mesh-loading" class="loading">正在载入真实网格…</div><span class="viewer-tag">TSDF / METRIC SURFACE</span></div>
+        <div class="viewer-bottom"><span>拖动旋转 · 滚轮缩放 · 方向键可操作</span><div class="tabs compact" role="group" aria-label="显示方式"><button data-render="surface" class="active" aria-pressed="true">表面</button><button data-render="points" aria-pressed="false">顶点</button></div></div>
+      </div>
+      <aside class="geometry-info"><div class="kicker">MESH INSPECTION</div><h3 id="mesh-name">蓝杯</h3><dl id="mesh-facts"></dl><a class="button primary full" id="mesh-download" href="downloads/blue_cup-observed-surface.ply" download>下载网格 PLY ↗</a><div class="info-note"><b>怎么看这个结果</b><p id="mesh-interpretation">每只杯融合137帧。未观测背面保留为空，网格仍有边界和缺口。</p><p>完整几何与位姿须共同验证；封闭不等于已经可以稳定执行任务。</p></div></aside>
+    </div>
+  </section>
+
+  <section id="quality" class="section">
+    <div class="section-head"><div><div class="kicker">03 / QUALITY &amp; TRADE-OFFS</div><h2>深度、投影与连续性，一起看</h2></div><span class="subtle">模型间一致性检查</span></div>
+    <div class="quality-layout"><div class="panel chart-panel"><div class="chart-title"><h3>整段覆盖率与手腕步长</h3><a href="assets/sequence_quality.pdf" target="_blank" rel="noopener">PDF ↗</a></div><a href="assets/sequence_quality.png" target="_blank" rel="noopener"><img src="assets/sequence_quality.png" alt="137 帧 SGBM 与学习式立体的有效比例、双杯深度覆盖，以及三种手轨迹的相邻手腕步长对照" loading="lazy"></a></div>
+      <div class="quality-side"><div class="panel table-panel"><h3>手部深度修正强度</h3><p class="subtle">更强的深度修正，也可能损失图像对齐。</p><div class="table-scroll"><table><thead><tr><th>强度 α</th><th>深度差</th><th>2D 偏差</th><th>轮廓 IoU</th></tr></thead><tbody id="tradeoff-rows"></tbody></table></div><p class="caption">三档均无超过 8 cm 的相邻手腕跳变。α 0.50 作为折中候选保留，尚未替换原始轨迹。</p></div><div class="note-panel"><h3>这些数字代表什么？</h3><p>深度差来自手模型表面与预测立体深度的比较，2D 偏差来自预测关键点；它们用于诊断拟合关系。</p><p>当前没有据此宣称 GT 准确率。边缘手、遮挡、杯子旋转对称性和局部深度离群点仍需处理。</p></div><a class="image-link" href="assets/three_frame_scene.png" target="_blank" rel="noopener"><img src="assets/three_frame_scene.png" alt="三帧原图及初始相机坐标系中的手关节与杯子可见表面正交对照" loading="lazy"><span>查看三帧坐标系对照 ↗</span></a></div>
+    </div>
+    <details class="comparison-details"><summary>查看前期 TripoSR 候选：为什么还没有采用？</summary><p>单图生成候选在背面出现明显伪影。它与这里的度量 TSDF 观测表面分开保留，尚未成为可靠完整网格。</p><a href="assets/triposr-candidate.jpg" target="_blank" rel="noopener"><img src="assets/triposr-candidate.jpg" alt="早期 TripoSR 蓝杯和米色杯的三视角渲染，背面存在形状伪影" loading="lazy"></a></details>
+  </section>
+
+  <section id="progress" class="section last-section">
+    <div class="section-head"><div><div class="kicker">04 / EXPERIMENT LOG</div><h2>完成了什么，接下来做什么</h2></div><span class="pill">Track 3 → Track 2 → Track 1</span></div>
+    <div class="progress-layout"><div class="panel timeline" id="stage-list"></div><aside class="next-panel"><div class="kicker">NEXT</div><h3>继续推进的三件事</h3><ol id="next-list"></ol><p>任务日志、原始结果和体积 checkpoint 均保存在服务器。当前仍优先推进 Track 3。</p><a class="button full" href="downloads/track3-results-offline.zip" download>下载本地结果页 ZIP ↗</a><p class="caption">解压后打开 index.html，可在本地浏览图像和三维表面。</p></aside></div>
+  </section>
+</main>
+<footer><div class="wrap footer-row"><span>V2D / TRACK 03 · EXPERIMENT SNAPSHOT</span><a href="https://nvidia-isaac.github.io/video_to_data/v2d_challenge/" target="_blank" rel="noopener">挑战说明 ↗</a><span id="footer-time"></span></div></footer>
+<noscript><p class="noscript">请启用 JavaScript 查看交互结果；也可直接下载 <a href="downloads/results-summary.json">结果摘要</a>。</p></noscript>
+</body></html>

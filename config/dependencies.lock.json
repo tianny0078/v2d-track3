@@ -1,0 +1,27 @@
+{
+  "snapshot_scope": "Track 3 episode_000011 experiment source; no model or dataset payloads",
+  "official_source": {
+    "repository": "https://github.com/nvidia-isaac/video_to_data.git",
+    "commit": "193382a184308f6800331f3db829f76dc4294cfe",
+    "flash_chord_uv_lock_sha256": "91f31dd1a6f72f8d2eadcf6d321d99f826e19db975adaac93c5364641be3d767"
+  },
+  "dataset": {
+    "repository": "nvidia/video_to_data_challenge",
+    "revision": "5f68335f3acc802033d1e80728c1633197521de8",
+    "episode": "episode_000011",
+    "included_in_scoring_roster": false
+  },
+  "triposr": {
+    "repository": "https://github.com/VAST-AI-Research/TripoSR.git",
+    "commit": "107cefdc244c39106fa830359024f6a2f1c78871"
+  },
+  "verified_flash_chord_environment": {
+    "python": "3.11.15",
+    "uv": "0.11.21",
+    "jax": "0.10.2",
+    "warp_lang": "1.14.0",
+    "newton": "1.2.0",
+    "mujoco": "3.8.1",
+    "gpu_architecture": "sm_120"
+  }
+}
