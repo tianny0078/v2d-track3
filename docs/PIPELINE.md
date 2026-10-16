@@ -14,7 +14,7 @@
 | 手部重定向初始化 | `initialize_sharpa_retarget.py` | 官方 Sharpa 运动学、关节范围、拟合与未知手 |
 | CHORD 参考 | `probe_contact_wrench.py` | 接触点、向内法向、摩擦锥、共享 512 方向与一次半径归一化 |
 | 官方接口 | `agent_reference_preflight.py` | 真实 parquet 加载、frame FK、link/COM、一致坐标与场景编译 |
-| 接触语义与 COM 接入 | `track3_masked_contact.py`, `track3_masked_objective.py`, `track3_com_reference.py`, `track3_reference_alignment.py` | 全 known 等价、unknown 屏蔽各分母、左右手与帧序、双 world 真实 GPU 物理/reset；learner 另行验证 |
+| 接触语义与 COM 接入 | `track3_masked_contact.py`, `track3_masked_objective.py`, `track3_com_reference.py`, `track3_reference_alignment.py` | 全 known 等价、unknown 屏蔽各分母、左右手与帧序、双 world 真实 GPU 物理/reset；learner 64→80 步真实训练与独立恢复通过，仍未生产就绪 |
 | 手桌冲突修复 | `agent_hand_table_reconcile.py`, `agent_hand_table_joint_fit_v2.py`, `agent_hand_table_joint_physics.py` | 原始双目与背景平面交叉核查、TRAIN 选择、重复留出监测、MANO 与机器人碰撞分别检查 |
 | 训练、评估、打包 | `agent_baseline_probe.py`，项目 learner 入口继续验证 | 已有 64→80 步诊断、15 个 checkpoint、恢复与真实 272 步策略 rollout；SR0，完整物理参考与评分打包未完成 |
 

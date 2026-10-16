@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-16T18:27:27.299549+00:00",
+  "updated_utc": "2026-10-16T18:29:48.263131+00:00",
   "updated_los_angeles": "2026-10-16T11:27:27.299702-07:00",
   "active_track": 3,
   "episode": "episode_000011",
@@ -101,10 +101,11 @@
     "real_GPU_worlds": 2,
     "real_GPU_world_physics_steps": 30,
     "independent_reset_pass": true,
-    "learner_validation": "in_progress",
+    "learner_validation": "64_to_80_steps_and_independent_restore_passed",
     "actual_GT_known_contacts": 0,
     "force_learning_demonstrated": false,
-    "production_ready": false
+    "production_ready": false,
+    "learner_entry_source_hash_matches_report": true
   },
   "kaggle_entry": {
     "all_six_entered": true,

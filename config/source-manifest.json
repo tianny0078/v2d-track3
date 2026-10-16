@@ -1,5 +1,5 @@
 {
-  "exported_utc": "2026-10-16T18:26:01.094227+00:00",
+  "exported_utc": "2026-10-16T18:29:48.262523+00:00",
   "scope": "Own Python source and four static page templates only",
   "files": [
     {
@@ -674,8 +674,8 @@
     },
     {
       "path": "scripts/train_track3_masked.py",
-      "sha256": "4b90238706f7b20fcbd065c507892e209f7933ccae537f8e3887b3a9793d6565",
-      "bytes": 6520
+      "sha256": "1137d5dd8ac5ff54ccd69e9eef0c18b68706379b87ff08ba37fd9b4144e5438e",
+      "bytes": 6646
     },
     {
       "path": "scripts/update_track3_site_progress.py",
@@ -713,24 +713,24 @@
       "bytes": 3685
     },
     {
-      "path": "sites/track3-results-20261015/dist/index.html",
-      "sha256": "ba8300b2425fdf12570d60fd5a3a87ee79d4ad7ec421b0c1df860f758c613a4e",
-      "bytes": 17341
-    },
-    {
-      "path": "sites/track3-results-20261015/dist/styles.css",
-      "sha256": "206906a50256da760e61bbd0144d4afa0a76154dce4c67f6222ae477c0383390",
-      "bytes": 16125
-    },
-    {
       "path": "sites/track3-results-20261015/dist/app.js",
       "sha256": "bcf07fa607cede27ed53a68ce10c958075068517575c7a254c9aadd52e4565f9",
       "bytes": 11646
     },
     {
+      "path": "sites/track3-results-20261015/dist/index.html",
+      "sha256": "ba8300b2425fdf12570d60fd5a3a87ee79d4ad7ec421b0c1df860f758c613a4e",
+      "bytes": 17341
+    },
+    {
       "path": "sites/track3-results-20261015/dist/progress.js",
       "sha256": "a6c058a4b47edd45121ee47836ea69742043ba4152f7a073cd43163146642e92",
       "bytes": 3546
+    },
+    {
+      "path": "sites/track3-results-20261015/dist/styles.css",
+      "sha256": "206906a50256da760e61bbd0144d4afa0a76154dce4c67f6222ae477c0383390",
+      "bytes": 16125
     }
   ]
 }

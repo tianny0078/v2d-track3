@@ -46,7 +46,8 @@ def main(cfg: DictConfig) -> None:
     cfg.env.objective.reference_known = known.tolist()
     assert cfg.scene.world_count == cfg.training.world_count
     env_config = hydra.utils.instantiate(cfg.env, _convert_="all")
-    env_config.objective.config.sides = tuple(env_config.objective.config.sides)
+    from dataclasses import replace
+    env_config = replace(env_config, objective=replace(env_config.objective, config=replace(env_config.objective.config, sides=tuple(env_config.objective.config.sides))))
     embodiment = instantiate_typed(cfg.embodiment, Embodiment)
     collision = instantiate_typed(cfg.collision, CollisionPolicy)
     training = instantiate_typed(cfg.training, TrainingConfig)
