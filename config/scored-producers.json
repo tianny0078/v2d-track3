@@ -43,8 +43,7 @@
     "producers/sha256_65e95b5aa57255a5c7239800190d03aa4039664561b6d44cc56462f26fe5fa59/run_track3_downstream_training.py": "65e95b5aa57255a5c7239800190d03aa4039664561b6d44cc56462f26fe5fa59",
     "producers/sha256_d589f66cf30133ffb60e5d44a4b70647e276f0d1d444830f19c25e85e72ee61f/evaluate_track3_ep30_coordinate.py": "d589f66cf30133ffb60e5d44a4b70647e276f0d1d444830f19c25e85e72ee61f",
     "producers/sha256_fe33311f6f673a68e5de520b6fd7da08b24b1a2452f3438ee39b59348011e449/evaluate_track3_ep33_resolution.py": "fe33311f6f673a68e5de520b6fd7da08b24b1a2452f3438ee39b59348011e449",
-    "producers/sha256_2363a8be0ed6a15c66b34bc56bd7844fb1d0d2162bdf594125d4e4a525831f15/run_track3_downstream_training.py": "2363a8be0ed6a15c66b34bc56bd7844fb1d0d2162bdf594125d4e4a525831f15",
-    "producers/sha256_29a798d3b9ac62e81b3884685d1de5d77b7f34620f1c3eed5fa72893dbf5bc7e/repair_track3_ep36_batch_stats.py": "29a798d3b9ac62e81b3884685d1de5d77b7f34620f1c3eed5fa72893dbf5bc7e"
+    "producers/sha256_2363a8be0ed6a15c66b34bc56bd7844fb1d0d2162bdf594125d4e4a525831f15/run_track3_downstream_training.py": "2363a8be0ed6a15c66b34bc56bd7844fb1d0d2162bdf594125d4e4a525831f15"
   },
   "episodes": 20,
   "meshes": 36,
