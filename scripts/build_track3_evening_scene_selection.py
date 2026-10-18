@@ -52,9 +52,16 @@ def bind_inputs(source,recoveries):
   for required in ['mesh_path','urdf_path','canonical_COM','bounding_radius_m','source_inputs']:assert required in a,(name,required)
   # The recovery's own visual-array equality check is source-bound; no extra fit.
   assert sha(report['source_mesh'])==report['source_mesh_sha256']
-  code=ROOT/'scripts/recover_track3_canonical_collision.py';helper=ROOT/'scripts/build_track3_coarse_objects.py'
+  allowed_producers={'scripts/recover_track3_canonical_collision.py','scripts/recover_track3_canonical_collision_qem.py','scripts/recover_track3_canonical_collision_qem_extra.py'}
+  declared=report.get('producer_path','scripts/recover_track3_canonical_collision.py')
+  assert declared in allowed_producers,'Unrecognized recovery producer'
+  code=ROOT/declared;helper=ROOT/'scripts/build_track3_coarse_objects.py'
   assert sha(code)==report['source_sha256'] and sha(helper)==report['helper_sha256']
-  producer[str(code.relative_to(ROOT))]=report['source_sha256'];producer[str(helper.relative_to(ROOT))]=report['helper_sha256']
+  producer[declared]=report['source_sha256'];producer[str(helper.relative_to(ROOT))]=report['helper_sha256']
+  allowed_helpers=allowed_producers|{'scripts/build_track3_coarse_objects.py'}
+  for path,digest in report.get('producer_source_sha256',{}).items():
+   assert path in allowed_helpers and sha(ROOT/path)==digest,'Changed or unrecognized recovery helper'
+   producer[path]=digest
   ready[name]=dict(folder=folder,report=report,report_path=report_path)
  # Bind all successfully reused asset reports and their exact output hashes.
  for p in sorted((source/'assets').glob('*/report.json')):
