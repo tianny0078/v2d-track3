@@ -21,11 +21,11 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT/'outputs/track3/advice_restart_20261017'
 SOURCE_SCENES = BASE/'canonical_all20_scenes_v1'
 SCENES = BASE/'canonical_evening_scene_selection_v1'
-RECOVERIES = (BASE/'canonical_collision_qem_v1/plastic_dish_rack',
-              BASE/'canonical_collision_qem_v1/mini_dust_pan',
+RECOVERIES = (BASE/'canonical_collision_postqem_v1/plastic_dish_rack',
+              BASE/'canonical_collision_postqem_v1/mini_dust_pan',
               BASE/'canonical_collision_qem_extra_v1/white_pot_lid')
 COHORT = ROOT/'outputs/track3/scored_baseline_20261017/canonical-checkpoint-v2'
-AREA = COHORT/'evening-pipeline-v2'
+AREA = COHORT/'evening-pipeline-v3'
 PREVIOUS_AREA = None
 STATUS = ROOT/'notes/track3-evening-delivery.json'
 SECOND_STATUS = ROOT/'notes/track3-second-submission-status.json'
@@ -40,7 +40,8 @@ SOURCES = ('run_track3_evening_pipeline.py', 'run_track3_canonical_checkpoint_ba
            'evaluate_track3_canonical_checkpoint.py', 'evaluate_track3_proxy_gate.py',
            'run_track3_second_submission.py', 'run_track3_submission_watch.py',
            'build_track3_evening_scene_selection.py', 'recover_track3_canonical_collision.py',
-           'recover_track3_canonical_collision_qem.py', 'recover_track3_canonical_collision_qem_extra.py')
+           'recover_track3_canonical_collision_qem.py', 'recover_track3_canonical_collision_qem_extra.py',
+           'recover_track3_canonical_collision_postqem.py')
 
 
 def read(path, default=None):
@@ -369,7 +370,7 @@ def main():
     global AREA, PREVIOUS_AREA
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run', action='store_true', help='Root-reviewed fixed task; launch this in host tmux')
-    parser.add_argument('--area', default='evening-pipeline-v2', help='Fixed-cohort sibling state directory name')
+    parser.add_argument('--area', default='evening-pipeline-v3', help='Fixed-cohort sibling state directory name')
     parser.add_argument('--previous-area', help='Previous idle controller area; inherit its first start and 24-hour cap')
     parser.add_argument('--worker-stage', choices=STAGES, help=argparse.SUPPRESS)
     args = parser.parse_args()

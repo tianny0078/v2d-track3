@@ -52,7 +52,7 @@ def bind_inputs(source,recoveries):
   for required in ['mesh_path','urdf_path','canonical_COM','bounding_radius_m','source_inputs']:assert required in a,(name,required)
   # The recovery's own visual-array equality check is source-bound; no extra fit.
   assert sha(report['source_mesh'])==report['source_mesh_sha256']
-  allowed_producers={'scripts/recover_track3_canonical_collision.py','scripts/recover_track3_canonical_collision_qem.py','scripts/recover_track3_canonical_collision_qem_extra.py'}
+  allowed_producers={'scripts/recover_track3_canonical_collision.py','scripts/recover_track3_canonical_collision_qem.py','scripts/recover_track3_canonical_collision_qem_extra.py','scripts/recover_track3_canonical_collision_postqem.py'}
   declared=report.get('producer_path','scripts/recover_track3_canonical_collision.py')
   assert declared in allowed_producers,'Unrecognized recovery producer'
   code=ROOT/declared;helper=ROOT/'scripts/build_track3_coarse_objects.py'
