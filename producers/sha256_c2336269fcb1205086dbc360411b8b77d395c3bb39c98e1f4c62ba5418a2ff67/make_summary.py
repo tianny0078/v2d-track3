@@ -1,0 +1,105 @@
+"""Summary page of procedural_geometry_v1: outputs/track3/procedural_geometry_v1/{summary.md,index.html} from the real
+report/eval JSON files (nothing hand-written about results)."""
+import json, html
+from pathlib import Path
+import numpy as np
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from common import OUT, T3, BASE
+
+METHOD = {
+    'white_pot': 'revolved shell (bottom fillet) + flat strap handle with hole + markers',
+    'white_pot_lid': 'revolved recessed plate (fitted mid-surface polyline) + arched strap handle + 4 posted markers',
+    'wooden_spoon': 'loft of super-elliptic sections (n=2.5), handle thickness <= 12 mm',
+    'beige_cup': 'truncated-cone shell + flat bottom + chamfer + markers',
+    'blue_cup': 'truncated-cone shell + flat bottom + chamfer + markers',
+    'plastic_dish_rack': 'rounded-rect tray ring + base block + holder tube + 14 tapered pegs + markers; bottom from mask fit',
+    'mini_sweeper': 'torus ring + body box + tapered bristle fan + markers',
+    'mini_dust_pan': 'floor plate (trapezoid U disc - hole) + flange walls + lip + markers',
+    'water_pitcher': 'x-symmetric bas-relief solid (silhouette x half-thickness field), level set + CoACD',
+    'wooden_piece_1': 'outline extrusion 8 mm + halving slot + markers, CoACD',
+    'wooden_piece_2': 'outline extrusion 8 mm + halving slot + markers, CoACD',
+}
+
+
+def load(p):
+    p = Path(p); return json.loads(p.read_text()) if p.exists() else {}
+
+
+def main():
+    col = load(OUT/'eval/collision.json'); sil = load(OUT/'eval/silhouettes.json'); scan = load(OUT/'eval/public_scans.json')
+    rows = []
+    for n in BASE:
+        r = load(OUT/n/'report.json'); c = r['checks']; m = r['metrics']; ph = r['physics']
+        s = [v for k, v in sil.items() if k.endswith(':'+n) and 'current' in v]
+        sc = scan.get(n, {})
+        cl = col.get(n, {})
+        rows.append(dict(
+            object=n, method=METHOD[n],
+            watertight=f"{c['visual']['reload_watertight'] and c['visual']['reload_is_volume']} / {c['visual_4096']['reload_watertight'] and c['visual_4096']['reload_is_volume']}",
+            faces=f"{c['visual']['faces']} / {c['visual_4096']['faces']}",
+            coll=f"{cl.get('current', {}).get('parts', '?')} -> {c['collision']['parts']}",
+            concav=f"{cl['current']['concavity_fill']:.3f} -> {cl['procedural']['concavity_fill']:.3f}" if cl else '',
+            cover=f"{cl['procedural']['coverage']:.3f}" if cl else '',
+            chamfer=f"{m['chamfer_new_vs_old']['chamfer_mean_mm']:.2f} / {m['chamfer_new_vs_old']['p95_mm']:.1f}",
+            iou=f"{m['iou_new_vs_old']:.2f}",
+            icp=f"{m['icp_new_to_old']['rot_deg']:.2f} deg / {m['icp_new_to_old']['trans_mm']:.2f} mm",
+            sil=(f"{np.mean([v['current']['iou_median'] for v in s]):.3f} -> {np.mean([v['procedural']['iou_median'] for v in s]):.3f}"
+                 f" ({np.mean([v['paired_iou_delta_median'] for v in s]):+.3f}, {sum(v['frames'] for v in s)} fr)") if s else '',
+            cdo=(f"{sc['current_mean']:.3f} -> {sc['procedural_mean']:.3f}" if isinstance(sc, dict) and sc else 'no scan'),
+            mass=f"{ph['mass_kg']:.3f}", iratio=f"{ph['inertia_eig_ratio_mean_over_min']:.1f}"))
+    H1 = ['object', 'method', 'watertight (vis / <=4096)', 'faces (vis / <=4096)', 'collision parts (cur -> new)',
+          'concavity fill (cur -> new)', 'coverage', 'Chamfer mean / p95 mm', 'IoU', 'ICP residual', 'silhouette IoU (paired d)',
+          'CD-O cm (validation)', 'mass kg', 'I mean/min']
+    K1 = ['object', 'method', 'watertight', 'faces', 'coll', 'concav', 'cover', 'chamfer', 'iou', 'icp', 'sil', 'cdo', 'mass', 'iratio']
+    # rest tests
+    v6 = load(T3/'learning_v6/rest_test.json'); v6p = load(T3/'learning_v7_geom_v6poses/rest_test.json'); v7 = load(T3/'learning_v7_geom/rest_test.json')
+    pen6 = load(OUT/'eval/v6_penetration_report.json'); pen7 = load(T3/'learning_v7_geom/penetration_report.json')
+    rrows = []
+    fmt = lambda o: (f"{o['init_pen_mm']:.2f} / {o['drift_mm']:.1f} / {o['rot_deg']:.1f} {'PASS' if o['passed'] else 'FAIL'}" if o else '')
+    for e in sorted(v7, key=int):
+        for n in v7[e]:
+            pp6 = [v['f0_pen_mm'] for k, v in pen6.get(e, {}).get('pairs', {}).items() if n in k.split('|')]
+            pp7 = [v['f0_pen_mm'] for k, v in pen7.get(e, {}).get('pairs', {}).items() if n in k.split('|')]
+            rrows.append(dict(ep=e, object=n, v6=fmt(v6.get(e, {}).get(n)), v6p=fmt(v6p.get(e, {}).get(n)), v7=fmt(v7[e][n]),
+                              pair=f"{max(pp6) if pp6 else '-'} -> {max(pp7) if pp7 else '-'}"))
+    cnt = lambda d: (sum(o['passed'] for e in d.values() for o in e.values()), sum(len(e) for e in d.values()))
+    H2 = ['ep', 'object', 'v6: current geom + v6 poses', 'procedural geom + v6 poses (no refit)', 'v7: procedural geom + refit poses', 'f0 pair depth mm (diag, v6 -> v7)']
+    K2 = ['ep', 'object', 'v6', 'v6p', 'v7', 'pair']
+    head = ('# procedural_geometry_v1 summary\n\nGenerated by `scripts/procedural_geometry/make_summary.py` from report/eval JSON. '
+            'Assumptions and parameter provenance: `notes/track3-procedural-geometry.md` and each `<object>/params.json`.\n\n'
+            'Chamfer / IoU / ICP: procedural vs current SAM3D mesh in the same canonical frame (no re-alignment applied; IoU of '
+            'thin shells is dominated by the wall-thickness correction). Concavity fill: share of the visual convex hull minus '
+            'the visual solid that the collision parts occupy (0 = cavities kept). Silhouette IoU: SAM2 masks vs render at the '
+            'FoundationPose v4 poses, every 5th frame of every scored episode. CD-O: official MPPE._object_chamfer_cm against '
+            'the public scans with the host budget, validation only (computed once after freezing all parameters).\n\n')
+    rest_hdr = (f"\nRest test (scripts/rest_test_track3_reference.py, frame 0, 2 s, pass = pen <= 1 mm, drift <= 5 mm, rot <= 3 deg); "
+                f"cells: init pen mm / drift mm / rot deg. Passed: v6 {cnt(v6)[0]}/{cnt(v6)[1]}, procedural + v6 poses {cnt(v6p)[0]}/{cnt(v6p)[1]}, "
+                f"v7 {cnt(v7)[0]}/{cnt(v7)[1]}.\n\n")
+    md = head + '## Objects\n\n' + _mdtable(H1, K1, rows) + '\n## Rest / penetration tests\n' + rest_hdr + _mdtable(H2, K2, rrows)
+    md += '\n## Renders\n\n' + ''.join(f'### {n}\n![{n}]({n}/compare.png)\n\n' for n in BASE)
+    md += '### ep1 frame 0 (v6 vs v7)\n![](eval/scene_ep1.png)\n\n### ep30 frame 0 (v6 vs v7)\n![](eval/scene_ep30.png)\n'
+    (OUT/'summary.md').write_text(md)
+    h = ['<!doctype html><html><head><meta charset="utf-8"><title>Procedural Geometry v1</title><style>',
+         ':root{--bg:#fff;--fg:#1d1d1f;--mute:#666;--line:#ddd}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161616;--fg:#eee;--mute:#aaa;--line:#333}}',
+         'body{background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,sans-serif;margin:0 auto;max-width:1400px;padding:16px}',
+         'table{border-collapse:collapse;font-size:12px;display:block;overflow-x:auto}td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}',
+         'img{max-width:100%;border:1px solid var(--line)}p{color:var(--mute)}</style></head><body>',
+         '<h1>Procedural geometry v1</h1>', '<p>' + html.escape(head.split('\n\n', 1)[1]) + '</p>', '<h2>Objects</h2>', _htable(H1, K1, rows),
+         '<h2>Rest / penetration tests</h2><p>' + html.escape(rest_hdr) + '</p>', _htable(H2, K2, rrows), '<h2>Renders</h2>']
+    h += [f'<h3>{n}</h3><img src="{n}/compare.png" loading="lazy">' for n in BASE]
+    h += ['<h3>ep1 frame 0: v6 (top) vs v7 (bottom)</h3><img src="eval/scene_ep1.png">', '<h3>ep30 frame 0: v6 (top) vs v7 (bottom)</h3><img src="eval/scene_ep30.png">', '</body></html>']
+    (OUT/'index.html').write_text('\n'.join(h))
+    print('ok', cnt(v6), cnt(v6p), cnt(v7))
+
+
+def _mdtable(H, K, rows):
+    return '| ' + ' | '.join(H) + ' |\n|' + '---|'*len(H) + '\n' + ''.join('| ' + ' | '.join(str(r[k]) for k in K) + ' |\n' for r in rows)
+
+
+def _htable(H, K, rows):
+    return ('<table><tr>' + ''.join(f'<th>{html.escape(x)}</th>' for x in H) + '</tr>' +
+            ''.join('<tr>' + ''.join(f'<td>{html.escape(str(r[k]))}</td>' for k in K) + '</tr>' for r in rows) + '</table>')
+
+
+if __name__ == '__main__': main()
