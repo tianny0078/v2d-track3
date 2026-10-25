@@ -1,0 +1,2251 @@
+task:
+  parquet: /home/tianyuan/projects/v2d/outputs/track3/learning_v3/episode_000028/learning/reference/episode_reference.parquet
+  motion_speed: 1.0
+  source_frame_playback: false
+  motion_start_frame: 0
+  motion_end_frame: -1
+sim:
+  _target_: flash_chord.runtime.sim.SimConfig
+  fps: 20.0
+  substeps: 25
+  solver: cg
+  integrator: implicitfast
+  cone: pyramidal
+  njmax: 4096
+  nconmax: 2048
+  impratio: 20.0
+  iterations: 100
+  ls_iterations: 50
+  use_mujoco_contacts: true
+scene:
+  world_count: 2048
+  support: false
+  decompose_objects: false
+  object_scale_min: 1.0
+  object_scale_max: 1.0
+  object_scale_seed: 0
+  contact_friction: 0.5
+  object_free_joint_damping: 0.0
+collision:
+  _target_: flash_chord.scene.collision.CollisionPolicy
+  robot_scope: all
+  hand_self_collision: true
+  robot_object_collision: true
+  robot_support_collision: false
+  ground: true
+embodiment:
+  _target_: flash_chord.embodiments.sharpa_hands.SharpaHands
+  config:
+    _target_: flash_chord.embodiments.sharpa_hands.SharpaHandsConfig
+action:
+  _target_: flash_chord.runtime.actions.ActionConfig
+  input_mode: normalized
+  normalized_mapping: rational
+  wrist_pos_scale: 0.05
+  wrist_ori_scale: 0.15
+  finger_joint_pos_scale: 0.15
+  wrist_pos_clip: 0.2
+  wrist_ori_clip: 1.0
+  finger_joint_pos_clip: 1.0
+  ema: 0.3
+  wrist_kp: 25.0
+  wrist_tau_max: 45.0
+  delay:
+    _target_: flash_chord.runtime.delay.TargetDelayConfig
+    min_steps: 0
+    max_steps: 0
+    seed: 0
+observation:
+  _target_: flash_chord.envs.observation.PolicyObservationConfig
+  sides:
+  - right
+  - left
+  contact_sides:
+  - left
+  - right
+  make_wrist_quat_unique: true
+  wrist_position:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  wrist_orientation:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  wrist_velocity:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  arm_joint_position:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: false
+    scale: 1.0
+  arm_joint_velocity:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: false
+    scale: 1.0
+  arm_joint_reference_delta:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: false
+    scale: 1.0
+  finger_joint_position:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  finger_joint_velocity:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  object_position:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  object_orientation:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  object_body_velocity:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: false
+    scale: 1.0
+  command_wrist:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  command_finger:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  command_object_position:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  command_object_orientation:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  raw_action:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  processed_action:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  contact_position:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+  contact_direction:
+    _target_: flash_chord.envs.observation.ObservationTermConfig
+    enabled: true
+    scale: 1.0
+objective:
+  _target_: flash_chord.objectives.config.ObjectiveConfig
+  hand_keypoint_frame: dp
+  object_keypoints:
+    _target_: flash_chord.objectives.config.ShapedObjectiveTermConfig
+    enabled: true
+    weight: 1.0
+    var: 0.1
+    shape: LAPLACIAN
+  hand_keypoints:
+    _target_: flash_chord.objectives.config.ShapedObjectiveTermConfig
+    enabled: true
+    weight: 1.0
+    var: 0.1
+    shape: LAPLACIAN
+  hand_joint_pos:
+    _target_: flash_chord.objectives.config.ShapedObjectiveTermConfig
+    enabled: true
+    weight: 1.0
+    var: 1.0
+    shape: LAPLACIAN
+  contact_wrench_support:
+    _target_: flash_chord.objectives.config.ContactSupportObjectiveTermConfig
+    enabled: false
+    weight: 0.0
+    tolerance: 0.1
+    var: 0.1
+    excluded_sim_link_names: []
+  missed_contact:
+    _target_: flash_chord.objectives.config.ObjectiveTermConfig
+    enabled: false
+    weight: 0.0
+  unintended_contact:
+    _target_: flash_chord.objectives.config.ObjectiveTermConfig
+    enabled: false
+    weight: 0.0
+  termination:
+    _target_: flash_chord.objectives.config.ObjectiveTermConfig
+    enabled: true
+    weight: -100.0
+  action_rate_l2:
+    _target_: flash_chord.objectives.config.ObjectiveTermConfig
+    enabled: true
+    weight: -0.005
+  action_l2:
+    _target_: flash_chord.objectives.config.ObjectiveTermConfig
+    enabled: true
+    weight: -0.002
+  contact_force_l2:
+    _target_: flash_chord.objectives.config.ContactForceObjectiveTermConfig
+    enabled: false
+    weight: 0.0
+    threshold: 0.0
+    mode: l2
+    history_length: 3
+    log_force_floor: 1.0
+    log_force_reference: 1000.0
+  force_closure:
+    _target_: flash_chord.objectives.config.ForceClosureObjectiveTermConfig
+    enabled: false
+    weight: 0.0
+    min_support: 0.01
+  num_wrench_basis: 512
+  num_friction_cone_edges: 8
+  friction_coefficient: 0.1
+  wrench_basis_seed: 0
+  sides:
+  - right
+  - left
+termination:
+  _target_: flash_chord.lifecycle.termination.TrackingTerminationConfig
+  wrist_position:
+    _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+    enabled: true
+    threshold: 0.15
+  wrist_orientation:
+    _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+    enabled: false
+    threshold: 0.0
+  object_position:
+    _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+    enabled: true
+    threshold: 0.1
+  object_orientation:
+    _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+    enabled: true
+    threshold: 0.5
+  reference_end:
+    _target_: flash_chord.lifecycle.termination.ReferenceEndTerminationTermConfig
+    enabled: true
+reset:
+  _target_: flash_chord.lifecycle.reset.ReferenceResetConfig
+  reset_finger_openness: 1.0
+  always_reset_to_first_frame: true
+  reset_to_first_frame_probability: 0.1
+  first_frame_voc_threshold: 0.1
+  voc_decay_steps: 0
+  voc_decay_mode: step
+  seed: 42
+env:
+  _target_: flash_chord.envs.rl.RLEnvConfig
+  sim:
+    _target_: flash_chord.runtime.sim.SimConfig
+    fps: 20.0
+    substeps: 25
+    solver: cg
+    integrator: implicitfast
+    cone: pyramidal
+    njmax: 4096
+    nconmax: 2048
+    impratio: 20.0
+    iterations: 100
+    ls_iterations: 50
+    use_mujoco_contacts: true
+  action:
+    _target_: flash_chord.runtime.actions.ActionConfig
+    input_mode: normalized
+    normalized_mapping: rational
+    wrist_pos_scale: 0.05
+    wrist_ori_scale: 0.15
+    finger_joint_pos_scale: 0.15
+    wrist_pos_clip: 0.2
+    wrist_ori_clip: 1.0
+    finger_joint_pos_clip: 1.0
+    ema: 0.3
+    wrist_kp: 25.0
+    wrist_tau_max: 45.0
+    delay:
+      _target_: flash_chord.runtime.delay.TargetDelayConfig
+      min_steps: 0
+      max_steps: 0
+      seed: 0
+  voc:
+    _target_: flash_chord.runtime.object_control.VOCParams
+    k_lin: 400.0
+    d_lin: 40.0
+    k_ang: 400.0
+    d_ang: 40.0
+    max_force: 0.0
+    max_torque: 0.0
+    gravity: 9.81
+  termination:
+    _target_: flash_chord.lifecycle.termination.TrackingTerminationConfig
+    wrist_position:
+      _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+      enabled: true
+      threshold: 0.15
+    wrist_orientation:
+      _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+      enabled: false
+      threshold: 0.0
+    object_position:
+      _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+      enabled: true
+      threshold: 0.1
+    object_orientation:
+      _target_: flash_chord.lifecycle.termination.ThresholdTerminationTermConfig
+      enabled: true
+      threshold: 0.5
+    reference_end:
+      _target_: flash_chord.lifecycle.termination.ReferenceEndTerminationTermConfig
+      enabled: true
+  contact:
+    _target_: flash_chord.runtime.contact.ContactTrackerConfig
+  objective:
+    _target_: track3_weighted_hand_objective.WeightedHandObjectiveSpec
+    config:
+      _target_: flash_chord.objectives.config.ObjectiveConfig
+      hand_keypoint_frame: dp
+      object_keypoints:
+        _target_: flash_chord.objectives.config.ShapedObjectiveTermConfig
+        enabled: true
+        weight: 1.0
+        var: 0.1
+        shape: LAPLACIAN
+      hand_keypoints:
+        _target_: flash_chord.objectives.config.ShapedObjectiveTermConfig
+        enabled: true
+        weight: 1.0
+        var: 0.1
+        shape: LAPLACIAN
+      hand_joint_pos:
+        _target_: flash_chord.objectives.config.ShapedObjectiveTermConfig
+        enabled: true
+        weight: 1.0
+        var: 1.0
+        shape: LAPLACIAN
+      contact_wrench_support:
+        _target_: flash_chord.objectives.config.ContactSupportObjectiveTermConfig
+        enabled: false
+        weight: 0.0
+        tolerance: 0.1
+        var: 0.1
+        excluded_sim_link_names: []
+      missed_contact:
+        _target_: flash_chord.objectives.config.ObjectiveTermConfig
+        enabled: false
+        weight: 0.0
+      unintended_contact:
+        _target_: flash_chord.objectives.config.ObjectiveTermConfig
+        enabled: false
+        weight: 0.0
+      termination:
+        _target_: flash_chord.objectives.config.ObjectiveTermConfig
+        enabled: true
+        weight: -100.0
+      action_rate_l2:
+        _target_: flash_chord.objectives.config.ObjectiveTermConfig
+        enabled: true
+        weight: -0.005
+      action_l2:
+        _target_: flash_chord.objectives.config.ObjectiveTermConfig
+        enabled: true
+        weight: -0.002
+      contact_force_l2:
+        _target_: flash_chord.objectives.config.ContactForceObjectiveTermConfig
+        enabled: false
+        weight: 0.0
+        threshold: 0.0
+        mode: l2
+        history_length: 3
+        log_force_floor: 1.0
+        log_force_reference: 1000.0
+      force_closure:
+        _target_: flash_chord.objectives.config.ForceClosureObjectiveTermConfig
+        enabled: false
+        weight: 0.0
+        min_support: 0.01
+      num_wrench_basis: 512
+      num_friction_cone_edges: 8
+      friction_coefficient: 0.1
+      wrench_basis_seed: 0
+      sides:
+      - right
+      - left
+    reference_known:
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    - - - 0
+        - 0
+      - - 0
+        - 0
+    provenance: Model DBT weighted hand reference; GT contact/force unknown; geometry
+      proxy diagnostic only; no external assistance.
+    body_com_local:
+    - - 0.0011250152402810546
+      - -0.025958638548315188
+      - -0.041695877677247424
+    - - 0.0023607171390595118
+      - 0.004103928182229009
+      - -0.05035625469185507
+    com_radius:
+    - 0.28563858277331133
+    - 0.23315479498533576
+    hand_reference_weight:
+    - - 1.0
+      - 1.0
+    - - 0.8735694775411261
+      - 0.8911330791295112
+    - - 0.8910198553120418
+      - 0.7580053620942758
+    - - 0.8806350223309458
+      - 0.7666220506426573
+    - - 0.8714995888678893
+      - 0.7515389219545174
+    - - 0.8263990846963499
+      - 0.8603487471973137
+    - - 0.9336161498467799
+      - 0.9072521323814039
+    - - 0.9098279666965002
+      - 0.8186381406374837
+    - - 0.9281732242875853
+      - 0.8955076423909235
+    - - 0.8955514402998141
+      - 0.9084175655552557
+    - - 0.9095640086826525
+      - 0.8733849082995943
+    - - 0.9515404485088728
+      - 0.949462219388699
+    - - 0.9416147853612931
+      - 0.9746690004424705
+    - - 0.9552431319125415
+      - 0.9674731448099309
+    - - 0.9572201347076393
+      - 0.9285496781968898
+    - - 0.9797370154882485
+      - 0.9326553437619102
+    - - 0.9798080246359422
+      - 0.9539448737601501
+    - - 0.9768605605436651
+      - 0.9686322224948745
+    - - 0.9758346340764179
+      - 0.9798496049730794
+    - - 0.9771280757035894
+      - 0.9538469511860657
+    - - 0.974551704114507
+      - 0.9289218516202278
+    - - 0.9819918514706291
+      - 0.9064477189050943
+    - - 0.9855288838873718
+      - 0.963446958493921
+    - - 0.9508924439218706
+      - 0.9362895635716282
+    - - 0.9503884287276237
+      - 0.9517792030794262
+    - - 0.9733135601850054
+      - 0.8993702245340325
+    - - 0.9820103176330307
+      - 0.9167245320667172
+    - - 0.969384979368769
+      - 0.8613417939842954
+    - - 0.9719055016715622
+      - 0.8883337092823224
+    - - 0.9530021928396921
+      - 0.8731961319959267
+    - - 0.7396372058644243
+      - 0.8655325786321096
+    - - 0.858657337799693
+      - 0.9105034975946372
+    - - 0.9243525196363763
+      - 0.9442373550489606
+    - - 0.8445933536758362
+      - 0.9349215466022726
+    - - 0.7799938928918888
+      - 0.9201414491524597
+    - - 0.7583696455882831
+      - 0.9279541848681265
+    - - 0.8825372303917794
+      - 0.884623366560492
+    - - 0.8236846611704169
+      - 0.9363181395686192
+    - - 0.8070378605067511
+      - 0.9333442821308767
+    - - 0.8204121968331204
+      - 0.9484525719726224
+    - - 0.9307921054420542
+      - 0.9566920765656567
+    - - 0.9487183583244002
+      - 0.9308177204938957
+    - - 0.8836949556132369
+      - 0.984045210513783
+    - - 0.9329128065778884
+      - 0.9717439790755646
+    - - 0.9044488678252723
+      - 0.9661682108464696
+    - - 0.934557238926281
+      - 0.9815734744712264
+    - - 0.9327613659097136
+      - 0.9868339551734896
+    - - 0.9007059438145477
+      - 0.9854721764710328
+    - - 0.9384649469243703
+      - 0.9733776471468194
+    - - 0.9601829156741153
+      - 0.9600120417946952
+    - - 0.9285577657241681
+      - 0.9729931299570057
+    - - 0.932897675780232
+      - 0.9891688906567
+    - - 0.9575435843951919
+      - 0.9472301333151938
+    - - 0.9581467893234207
+      - 0.9677796578679616
+    - - 0.9687219954399457
+      - 0.9509513700870269
+    - - 0.9742048126156576
+      - 0.9726397260734939
+    - - 0.9701812704820141
+      - 0.9899891928859992
+    - - 0.9721541913716203
+      - 0.9821606142838621
+    - - 0.9827148541288606
+      - 0.9586692650272692
+    - - 0.9646546996534058
+      - 0.9525126584957999
+    - - 0.9450605261256325
+      - 0.9679291994829796
+    - - 0.9341138633775272
+      - 0.9783804837117394
+    - - 0.9465803125918155
+      - 0.9368443055053884
+    - - 0.9544985415546144
+      - 0.9080962251995358
+    - - 0.9132174192180911
+      - 0.9386795028127364
+    - - 0.9119616240998815
+      - 0.8832926391911085
+    - - 0.9290695956256466
+      - 0.8298245396997846
+    - - 0.9019572160189773
+      - 0.8336428482016713
+    - - 0.8670108055283693
+      - 0.7845668536552822
+    - - 0.9123278640366919
+      - 0.7013397769242383
+    - - 0.9123560783989876
+      - 0.7957319287031758
+    - - 0.8917443619531081
+      - 0.636360502386426
+    - - 0.868463330689196
+      - 0.7515432941549044
+    - - 0.968478422544315
+      - 0.6776388716763838
+    - - 0.9417654200644359
+      - 0.6817655360555933
+    - - 0.9640894882076078
+      - 0.7403653872519708
+    - - 0.9589403408221778
+      - 0.6242631810058404
+    - - 0.9486877166180325
+      - 0.38164987435215736
+    - - 0.9703134643693057
+      - 0.46200738794406254
+    - - 0.959289263865452
+      - 0.42841350563483194
+    - - 0.967718619249645
+      - 0.27247374680297215
+    - - 0.9874379454703702
+      - 0.487128096738586
+    - - 0.9703650895191394
+      - 0.5199852010827201
+    - - 0.9816225332505216
+      - 0.5031689183988413
+    - - 0.9757382729697586
+      - 0.33570501005837056
+    - - 0.9220437713488195
+      - 0.42006324500509795
+    - - 0.9404196439181524
+      - 0.6855728732901437
+    - - 0.9279407344728459
+      - 0.7224178639293483
+    - - 0.8935161495702905
+      - 0.6982929468540935
+    - - 0.9307384755850716
+      - 0.6618816595277077
+    - - 0.9284044500935823
+      - 0.6929149676471572
+    - - 0.93151709604076
+      - 0.5664910302781846
+    - - 0.9213209729398802
+      - 0.6595400990659724
+    - - 0.8655988043567452
+      - 0.6386172634965254
+    - - 0.8822240749793581
+      - 0.5835965584254148
+    - - 0.9066455477289672
+      - 0.6600705603543828
+    - - 0.8651625167677554
+      - 0.7322447427838913
+    - - 0.8600607385859992
+      - 0.7397239292853655
+    - - 0.86821098943236
+      - 0.7021442985011577
+    - - 0.8790385309840059
+      - 0.7248857968895258
+    - - 0.8660736516553678
+      - 0.7321150679526135
+    - - 0.8601111363773739
+      - 0.757075416240468
+    - - 0.8608435444305689
+      - 0.7524496665730922
+    - - 0.8424383698147004
+      - 0.7027714774735571
+    - - 0.7856708983272928
+      - 0.7274164744039138
+    - - 0.815921770499416
+      - 0.6899227213939806
+    - - 0.8245525428351984
+      - 0.7527162019981779
+    - - 0.8270559210520015
+      - 0.7366590307639281
+    - - 0.793332501315556
+      - 0.7437312847241883
+    - - 0.8270368246952717
+      - 0.6967125543483904
+    - - 0.82937714442343
+      - 0.7605511288288013
+    - - 0.8735054175256601
+      - 0.7668202102276634
+    - - 0.906984600199324
+      - 0.7663422741476922
+    - - 0.9220627013380349
+      - 0.7369111110135158
+    - - 0.9149351490601266
+      - 0.7566704548186018
+    - - 0.9520341273958264
+      - 0.7747708177174882
+    - - 0.9395523963325941
+      - 0.7732085690749663
+    - - 0.8812185778666711
+      - 0.7670839448195585
+    - - 0.9161448395409066
+      - 0.7825529318084198
+    - - 0.8991521416023394
+      - 0.7335595182104335
+    - - 0.9373170019186674
+      - 0.7143592137386531
+    - - 0.929568030153589
+      - 0.7334434969031347
+    - - 0.9459888443778182
+      - 0.7898780064253937
+    - - 0.9314537756088626
+      - 0.7520664894926377
+    - - 0.9064732859584722
+      - 0.7446335747216523
+    - - 0.9355616688041498
+      - 0.7337203549540658
+    - - 0.9642649583110521
+      - 0.724795141021671
+    - - 0.9508383856931479
+      - 0.7476647506300707
+    - - 0.967890403350799
+      - 0.7795453704524409
+    - - 0.9720378149151896
+      - 0.7321515327435952
+    - - 0.9631094836655715
+      - 0.771672517924761
+    - - 0.9621473295225085
+      - 0.7758256974401001
+    - - 0.951841216343069
+      - 0.7318725493496082
+    - - 0.9491307112072024
+      - 0.6664365215019271
+    - - 0.9612000935559443
+      - 0.768534431849806
+    - - 0.9775275886093939
+      - 0.7301343570949433
+    - - 0.9587539613800081
+      - 0.7570621588430451
+    - - 0.9646692773740067
+      - 0.7602581599503258
+    - - 0.9773443415130662
+      - 0.7619421558288261
+    - - 0.944596938235694
+      - 0.7633016527054522
+    - - 0.9420600648583822
+      - 0.759518984712773
+    - - 0.933436019550056
+      - 0.7381735136247315
+    - - 0.9681276199577384
+      - 0.7487643336981052
+    - - 0.976588504233989
+      - 0.7353814817954738
+    - - 0.9668550929470696
+      - 0.7529618297799413
+    - - 0.9670144606086356
+      - 0.7082688913842816
+    - - 0.9534938032944635
+      - 0.7857297725494837
+    - - 0.9587003426794533
+      - 0.7480688251479651
+    - - 0.9648713791125797
+      - 0.7601086442486051
+    - - 0.9649655103753364
+      - 0.8051638183664328
+    - - 0.9728473268786045
+      - 0.7915829066627279
+    - - 0.9766224225310312
+      - 0.8024099291770403
+    - - 0.9566973603324828
+      - 0.7661996599036184
+    - - 0.9759183101050456
+      - 0.8145092380147028
+    - - 0.946363264065417
+      - 0.7962608489879393
+    - - 0.970670387827078
+      - 0.8179075591565205
+    - - 0.9695516126734058
+      - 0.8175958928543158
+    - - 0.9740465156494149
+      - 0.8113372593531422
+    - - 0.9620029895486015
+      - 0.8089232131378112
+    - - 0.972959492504546
+      - 0.8381695419609525
+    - - 0.9595303333351902
+      - 0.8027237444792348
+    - - 0.9659697374923575
+      - 0.8150403699877792
+    - - 0.935927965917597
+      - 0.821855321698096
+    - - 0.9783470936611792
+      - 0.8488009872854573
+    - - 0.9748005217434048
+      - 0.8281325986240401
+    - - 0.9679807211215566
+      - 0.8165702678377046
+    - - 0.9939358793377802
+      - 0.8091624592459492
+    - - 0.9781990423734582
+      - 0.8542743244962272
+    - - 0.9658807063453184
+      - 0.8054989435576829
+    - - 0.9871125202005185
+      - 0.7837990273443078
+    - - 0.9750362555851935
+      - 0.8383679269825954
+    - - 0.9753994868305774
+      - 0.8157101505561875
+    - - 0.951344966018578
+      - 0.7720778378381876
+    - - 0.95605864989797
+      - 0.8491700428727745
+    - - 0.9674319746967582
+      - 0.7590573139374643
+    - - 0.9940395654493864
+      - 0.8351310426257511
+    - - 0.9832321936393599
+      - 0.8134616516416028
+    - - 0.9779120722781723
+      - 0.8499814921969012
+    - - 0.9922515779744882
+      - 0.8559238772230874
+    - - 0.9596693764893685
+      - 0.8355936699380475
+    - - 0.9623393665502348
+      - 0.844185313030603
+    - - 0.9717703900455814
+      - 0.7987431487694303
+    - - 0.9754608117432695
+      - 0.7891825448858705
+    - - 0.9937157220525997
+      - 0.8167740439072484
+    - - 0.9722975269974495
+      - 0.8282698147801223
+    - - 0.9931015487449848
+      - 0.8513110992567595
+    - - 0.9731170842326127
+      - 0.8533488289339568
+    - - 0.9945270993816747
+      - 0.7942295864480782
+    - - 0.9792262978365522
+      - 0.7968397806550634
+    - - 0.9630171757850443
+      - 0.8256569827130393
+    - - 0.9918729895726501
+      - 0.8368424041769521
+    - - 0.9578290469028912
+      - 0.8492460353205784
+    - - 0.970356419717845
+      - 0.8049438415551485
+    - - 0.9489747912952139
+      - 0.8386075763271171
+    - - 0.9636105977647799
+      - 0.8397155256265392
+    - - 0.9798183963861468
+      - 0.825173501726769
+    - - 0.970235179001326
+      - 0.8200719574608809
+    - - 0.9398208636383885
+      - 0.8092589211218636
+    - - 0.9535043775988765
+      - 0.8204842020806781
+    - - 0.963582055570213
+      - 0.8247532556706648
+    - - 0.9445832552165832
+      - 0.7236330390248965
+    - - 0.9220394796179036
+      - 0.7692511697786657
+    - - 0.8760105820674614
+      - 0.763403186117355
+    - - 0.8717743846775756
+      - 0.7730264515757895
+    - - 0.5792133450673818
+      - 0.7231822227738535
+    - - 0.5822125828451634
+      - 0.7552686558309556
+    - - 0.5720509019819954
+      - 0.7542835577196612
+    - - 0.6595009391633704
+      - 0.7977630826702892
+    - - 0.5937027103006003
+      - 0.6882501517629991
+    - - 0.6829673716278714
+      - 0.8023336198440054
+    - - 0.7193670171830918
+      - 0.5599370855006405
+    - - 0.8393180306412076
+      - 0.6139465734513979
+    - - 0.8768366412095514
+      - 0.7878831782569038
+    - - 0.8868250103976284
+      - 0.8966957317486796
+    - - 0.5149619175214076
+      - 0.8930631111625418
+    - - 0.8640055407838314
+      - 0.951810131345937
+    - - 0.9378426626932175
+      - 0.9265930889652529
+    - - 0.9453484760423985
+      - 0.8847974369014936
+    - - 0.9327785305663772
+      - 0.9765472894612383
+    - - 0.9186699712364543
+      - 0.9770159481502693
+  voc_scale: 0.0
+  arm_position_integral:
+    _target_: flash_chord.runtime.joint_drive.JointPositionIntegralConfig
+    gain_s_inv2: 0.0
+    max_effort_fraction: 0.15
+  enforce_joint_velocity_limits: false
+  observation:
+    _target_: flash_chord.envs.observation.PolicyObservationConfig
+    sides:
+    - right
+    - left
+    contact_sides:
+    - left
+    - right
+    make_wrist_quat_unique: true
+    wrist_position:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    wrist_orientation:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    wrist_velocity:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    arm_joint_position:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: false
+      scale: 1.0
+    arm_joint_velocity:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: false
+      scale: 1.0
+    arm_joint_reference_delta:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: false
+      scale: 1.0
+    finger_joint_position:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    finger_joint_velocity:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    object_position:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    object_orientation:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    object_body_velocity:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: false
+      scale: 1.0
+    command_wrist:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    command_finger:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    command_object_position:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    command_object_orientation:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    raw_action:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    processed_action:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    contact_position:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+    contact_direction:
+      _target_: flash_chord.envs.observation.ObservationTermConfig
+      enabled: true
+      scale: 1.0
+  reset:
+    _target_: flash_chord.lifecycle.reset.ReferenceResetConfig
+    reset_finger_openness: 0.7
+    always_reset_to_first_frame: false
+    reset_to_first_frame_probability: 0.5
+    first_frame_voc_threshold: 0.1
+    voc_decay_steps: 0
+    voc_decay_mode: step
+    seed: 42
+  auto_reset: true
+  capture_terminal_state: true
+  critic_context:
+    _target_: flash_chord.envs.rl.CriticContextConfig
+    reference_phase: true
+    object_body_velocity: true
+curriculum:
+  _target_: flash_chord.configuration.make_fixed_curriculum
+  thresholds:
+  - 391168
+  - 686080
+  - 980992
+  - 1275904
+  - 1570816
+  - 1865728
+  - 2160640
+  - 2455552
+  - 2750464
+  - 3997696
+  - 4999168
+  stages:
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+  - _target_: flash_chord.configuration.make_curriculum_stage
+    voc_scale: 0.0
+    objective_weights:
+      object_keypoints: 20.0
+      hand_keypoints: 0.25
+      hand_joint_pos: 0.25
+      contact_wrench_support: 0.0
+      missed_contact: 0.0
+      unintended_contact: 0.0
+      termination: -100.0
+      action_rate_l2: -0.005
+      action_l2: -0.002
+      contact_force_l2: 0.0
+      force_closure: 0.0
+    reset_to_first_frame_probability: 0.5
+logging:
+  mode: disabled
+  entity: nvidia-isaac
+  project: v2d-flash-chord
+  experiment: sharpa
+  run_name: sharpa_flash_sac
+  log_interval: 25
+  upload_checkpoints: false
+  upload_training_state: false
+training:
+  _target_: flash_chord.training.flash_sac.config.TrainingConfig
+  seed: 42
+  world_count: 2048
+  total_environment_steps: 4999168
+  updates_per_collection: 8.0
+  discount: 0.99
+  mixed_precision: true
+  compute_dtype: float16
+  device: cuda:0
+  resume: false
+  checkpoint_path: null
+  wandb_entity: nvidia-isaac
+  wandb_project: v2d-flash-chord
+  experiment_name: sharpa
+  run_name: sharpa_flash_sac
+  curriculum:
+    _target_: flash_chord.configuration.make_fixed_curriculum
+    thresholds:
+    - 391168
+    - 686080
+    - 980992
+    - 1275904
+    - 1570816
+    - 1865728
+    - 2160640
+    - 2455552
+    - 2750464
+    - 3997696
+    - 4999168
+    stages:
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+    - _target_: flash_chord.configuration.make_curriculum_stage
+      voc_scale: 0.0
+      objective_weights:
+        object_keypoints: 20.0
+        hand_keypoints: 0.25
+        hand_joint_pos: 0.25
+        contact_wrench_support: 0.0
+        missed_contact: 0.0
+        unintended_contact: 0.0
+        termination: -100.0
+        action_rate_l2: -0.005
+        action_l2: -0.002
+        contact_force_l2: 0.0
+        force_closure: 0.0
+      reset_to_first_frame_probability: 0.5
+  network:
+    _target_: flash_chord.training.flash_sac.config.NetworkConfig
+    actor_blocks: 2
+    actor_hidden_dim: 256
+    actor_head_mode: residual
+    residual_mean_head: unit_gain
+    initial_normalized_std: 0.1
+    critic_blocks: 2
+    critic_hidden_dim: 512
+    expansion: 4
+    critic_count: 2
+    atom_count: 101
+    log_std_min: -10.0
+    log_std_max: -1.8971199848858813
+    batch_norm_update_rate: 0.01
+    batch_norm_epsilon: 1.0e-05
+    rms_norm_epsilon: 1.0e-06
+    projection_epsilon: 1.0e-08
+  optimization:
+    _target_: flash_chord.training.flash_sac.config.OptimizationConfig
+    learning_rate_initial: 0.0003
+    learning_rate_peak: 0.0003
+    learning_rate_end: 0.00015
+    learning_rate_schedule_updates: 19528
+    warmup_fraction: 1.0e-06
+    decay_fraction: 1.0
+    adam_beta1: 0.9
+    adam_beta2: 0.999
+    adam_epsilon: 1.0e-08
+    loss_scale_initial: 65536.0
+    loss_scale_growth_factor: 2.0
+    loss_scale_backoff_factor: 0.5
+    loss_scale_growth_interval: 2000
+    actor_update_period: 2
+    actor_learning_rate_multiplier: 1.0
+    residual_mean_learning_rate_multiplier: 0.1
+    behavior_cloning_coefficient: 0.0
+    target_tau: 0.01
+  replay:
+    _target_: flash_chord.training.flash_sac.config.ReplayConfig
+    capacity: 4194304
+    minimum_size: 409600
+    batch_size: 2048
+    n_step: 3
+    sampling: uniform
+    clear_on_stage_change: false
+    observation_storage_dtype: float32
+  exploration:
+    _target_: flash_chord.training.flash_sac.config.ExplorationConfig
+    target_sigma: 0.1
+    initial_temperature: 0.01
+    zeta_exponent: 2.0
+    maximum_noise_repeat: 16
+    warmup_action: policy
+  reward_normalization:
+    _target_: flash_chord.training.flash_sac.config.RewardNormalizationConfig
+    enabled: true
+    normalized_return_bound: 5.0
+    epsilon: 1.0e-08
+    running_moments_epsilon: 0.0001
+  checkpoint:
+    _target_: flash_chord.training.flash_sac.config.CheckpointConfig
+    save_interval_environment_steps: 4999168
+    save_replay: true
+    load_replay_path: null
+    load_optimizer: true
+    load_reward_normalizer: true
+output_dir: /mnt/nas3/tianyuan/v2d-track3/learning_v3/episode_000028/training/checkpoints
+voc_scale_override: 0.0

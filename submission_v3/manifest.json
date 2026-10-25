@@ -270,9 +270,27 @@
    }
   },
   "episode_000016": {
-   "candidate": "sub2",
-   "rollout_sha256": "98302762ff27dda85e096a36a561e4bf7907a80f70f363f12b76f9da3673061a",
-   "producer_source": "commit 0dfc39b (submission #2 producers)",
+   "candidate": "learning_v5@4999168",
+   "rollout_sha256": "5af85112c6b8963b49a5160796fce12cc12a472d1e5caaba53b1de40f401407a",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_993e4cf397a9a300304b67221d98a41a5e223c2d0f4a462c9b6fd8d4aa78a780/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_b8b271433a747aaaacbfe58af4ce493c6493524858b55c306164c55190800cdb/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_17771d25494363974d5d6092f5a3fd7dcb19bf5b168d4d86fbdd4bf697945210/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
    "meshes": {
     "plastic_dish_rack": {
      "faces": 2770,
@@ -384,9 +402,27 @@
    }
   },
   "episode_000028": {
-   "candidate": "sub2",
-   "rollout_sha256": "e2ac4b697b90069efb9bf12a8b34cc63b4da6fb6226e924b58142096013b077c",
-   "producer_source": "commit 0dfc39b (submission #2 producers)",
+   "candidate": "learning_v3@4999168",
+   "rollout_sha256": "b6f96d0470ff7fcd001be14199767ade5747c53b4fa00132ce7871aa244fa94f",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_1cc138d3099969730c9eb117b834270942c249690dade8b09fb5bef094ca20f3/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_0b52a2b0bd40388814e31f89ed8166a69ce60437e036a468eaab9469ee426513/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_0a939fc65f1eb581b0bcda258a745f0114c391ec1ca2e602cc76e9532f131f1e/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_6761644ede5c9aefcffb2ecdac281288f2d819fdd1596a05f7a1d1596e4e0b93/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
    "meshes": {
     "plastic_dish_rack": {
      "faces": 2770,
@@ -465,9 +501,27 @@
    }
   },
   "episode_000033": {
-   "candidate": "sub2",
-   "rollout_sha256": "0a741a48fdb87abc29bf88bfcb4884b4ebb769a7a42af2a8c78194503959c580",
-   "producer_source": "commit 0dfc39b (submission #2 producers)",
+   "candidate": "learning_v3@1998848",
+   "rollout_sha256": "1ddb9bff165f5eb56bedccabba8493aa0375a11f578539942a35fe5097f6c4eb",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_1cc138d3099969730c9eb117b834270942c249690dade8b09fb5bef094ca20f3/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_0b52a2b0bd40388814e31f89ed8166a69ce60437e036a468eaab9469ee426513/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_0a939fc65f1eb581b0bcda258a745f0114c391ec1ca2e602cc76e9532f131f1e/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_468a61691a4670118bff63fb537a2c4149a2ebe4d0ab795da46cac84e5e359e2/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
    "meshes": {
     "blue_cup": {
      "faces": 1094,
@@ -598,7 +652,7 @@
   }
  },
  "shared": {
-  "scripts/select_track3_submission_candidates.py": "producers/sha256_cdd57be20a27dab449b5e19ad4a30fd88c9e2f3686119242ac715018d6f3140a/select_track3_submission_candidates.py",
+  "scripts/select_track3_submission_candidates.py": "producers/sha256_5fee66a290ea30b4a3ec6c4268ff186cd7f12830e611fc0ea8948aa1e22fdd6f/select_track3_submission_candidates.py",
   "scripts/track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
   "scripts/fix_track3_reference_support.py": "producers/sha256_fee2270b39a72dc5973dd2ca94ed4c8f7fc28a5c115d27ea152ca815b5048c2a/fix_track3_reference_support.py",
   "scripts/rest_test_track3_reference.py": "producers/sha256_5bd58327080bb737290a20c2c13b033ea9aa7257c09a220c5b8c4d588c598314/rest_test_track3_reference.py",
