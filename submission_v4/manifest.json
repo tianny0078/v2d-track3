@@ -1,0 +1,713 @@
+{
+ "submission": "track3 #4",
+ "episodes": {
+  "episode_000001": {
+   "candidate": "learning_v7r@1999872",
+   "rollout_sha256": "b4e6c6f22ec3c24b61a933cf4936530d54569a7674be1b77eb7fad2db087f072",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "white_pot": {
+     "faces": 1410,
+     "sha256": "4924b9af8ca731c36561a309479cfd5c6322b1f72362ba0f92672a0c11bc8a9c"
+    },
+    "white_pot_lid": {
+     "faces": 1890,
+     "sha256": "6675e81d34e8519a95b8daf879936bcff728e11e10edda5da0fe511d3a92529e"
+    }
+   }
+  },
+  "episode_000003": {
+   "candidate": "learning_v7r@3999744",
+   "rollout_sha256": "f1952131685aa507d55fe497af91b91f6a03073ced6d6e8540abb4f4329e7e22",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "white_pot": {
+     "faces": 1410,
+     "sha256": "4924b9af8ca731c36561a309479cfd5c6322b1f72362ba0f92672a0c11bc8a9c"
+    },
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000005": {
+   "candidate": "learning_v6i@9999360",
+   "rollout_sha256": "2bd3c06ecc472acfc10ef5384a5e889e8456bbfe70709212ea97a6fabca707e3",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_09d366e778bc09fc69bd486bf66663fa9f0569c9e4b782590bb4c77a943916e6/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_cd4c803e2df7fd9b63f0d453781224e59538553a770516a856c577f6f1d9181b/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "white_pot": {
+     "faces": 1410,
+     "sha256": "4924b9af8ca731c36561a309479cfd5c6322b1f72362ba0f92672a0c11bc8a9c"
+    },
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000006": {
+   "candidate": "learning_v7r@5999616",
+   "rollout_sha256": "b4345eb427135bafabf5d83fb51cd587fc9096ef994dd59716ced21bd2a76610",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "white_pot": {
+     "faces": 1410,
+     "sha256": "4924b9af8ca731c36561a309479cfd5c6322b1f72362ba0f92672a0c11bc8a9c"
+    },
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000008": {
+   "candidate": "learning_v7r@9999360",
+   "rollout_sha256": "ed8257795c41a22431973c3b32df1cf58b8b4164a2ff9d29a3a4d48bf130e8db",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "beige_cup": {
+     "faces": 980,
+     "sha256": "3021044445f68e307bbd70259c1d9f65c3491983ad123eeb8c75c459c77b2038"
+    },
+    "white_pot": {
+     "faces": 1410,
+     "sha256": "4924b9af8ca731c36561a309479cfd5c6322b1f72362ba0f92672a0c11bc8a9c"
+    }
+   }
+  },
+  "episode_000010": {
+   "candidate": "learning_fm_hc@9999360",
+   "rollout_sha256": "594a50a266476e8e72a251d2d91e95104bf6260963f5857a40e5dd09fcd7e0c7",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "blue_cup": {
+     "faces": 1094,
+     "sha256": "cfe94cedcd14ada5df38efac3ee17dec1f6cafc0f620cdda68970b4e23776a5a"
+    },
+    "beige_cup": {
+     "faces": 980,
+     "sha256": "3021044445f68e307bbd70259c1d9f65c3491983ad123eeb8c75c459c77b2038"
+    }
+   }
+  },
+  "episode_000014": {
+   "candidate": "learning_fm_hc@7999488",
+   "rollout_sha256": "c03550bfbb8606e6c160489503bff044738832707d9ce58c3c67b0116c360629",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "blue_cup": {
+     "faces": 1094,
+     "sha256": "e25541f1458a1d68fc747e87f8a50b55490be77748e8f007ef1dd3a668ddb337"
+    },
+    "plastic_dish_rack": {
+     "faces": 2770,
+     "sha256": "2ed6481e32dcaf6654b38f0007a710143d97611339128c194431947e20778e06"
+    }
+   }
+  },
+  "episode_000015": {
+   "candidate": "learning_v7t@5999616",
+   "rollout_sha256": "7e76cb57524e5bb87e12c9f00f04b8a0fefea2100dcb0726f5a3246457949f36",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "plastic_dish_rack": {
+     "faces": 2770,
+     "sha256": "2ed6481e32dcaf6654b38f0007a710143d97611339128c194431947e20778e06"
+    },
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000016": {
+   "candidate": "learning_v7t@3999744",
+   "rollout_sha256": "151e135d7cf613f6427ea36ff9f311337aa15d900c11d8031deedff7f7df1074",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "plastic_dish_rack": {
+     "faces": 2770,
+     "sha256": "2ed6481e32dcaf6654b38f0007a710143d97611339128c194431947e20778e06"
+    },
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000019": {
+   "candidate": "learning_v5@1999872",
+   "rollout_sha256": "33733cad961833ae2b82deafaacdf2caac2616af174bd77f056b8303c5ecd262",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_993e4cf397a9a300304b67221d98a41a5e223c2d0f4a462c9b6fd8d4aa78a780/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_b8b271433a747aaaacbfe58af4ce493c6493524858b55c306164c55190800cdb/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_17771d25494363974d5d6092f5a3fd7dcb19bf5b168d4d86fbdd4bf697945210/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "mini_sweeper": {
+     "faces": 756,
+     "sha256": "1f9967922b67bd0d4f47bd136ae6b06cfbc39a6a3d9b9e1824a76bccd77bc82c"
+    },
+    "mini_dust_pan": {
+     "faces": 1348,
+     "sha256": "6070aacf7cb423ae59d4aa90dace29e2bdfbbbbf5b7159b7705b3ce7d0d87404"
+    }
+   }
+  },
+  "episode_000020": {
+   "candidate": "learning_v7r@9999360",
+   "rollout_sha256": "25882896bc8ce9a770c1263086dc314b78825de12b25d1ebb091c1088754ae20",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "blue_cup": {
+     "faces": 1094,
+     "sha256": "51aa3ead67bf94e889b3f3998b7520b3092826040c5fbc57a9c561f201b5c7c6"
+    },
+    "water_pitcher": {
+     "faces": 3696,
+     "sha256": "b3e7ed3e8a6633f0eba22e35c661e10be31e6ac9e822284e9a2201b8cb6976b1"
+    }
+   }
+  },
+  "episode_000025": {
+   "candidate": "learning_v5@1999872",
+   "rollout_sha256": "dac840002c83456ec0e354e9de8706e775f1fa6bad7ac468ae5a3a2dff4c8c9e",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_993e4cf397a9a300304b67221d98a41a5e223c2d0f4a462c9b6fd8d4aa78a780/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_b8b271433a747aaaacbfe58af4ce493c6493524858b55c306164c55190800cdb/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_17771d25494363974d5d6092f5a3fd7dcb19bf5b168d4d86fbdd4bf697945210/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "wooden_piece_1": {
+     "faces": 664,
+     "sha256": "37681bccf839fa69be51906243149932f3ffd93fa98733147fa7c5b1a15b8425"
+    },
+    "wooden_piece_2": {
+     "faces": 662,
+     "sha256": "9abcb46c2020dd522b40f6bab3672faa50f5b95f0dc1008150a221d9a273606a"
+    }
+   }
+  },
+  "episode_000028": {
+   "candidate": "learning_v7r@3999744",
+   "rollout_sha256": "48b2c407b6b1513dd67afd30379c0a9aa9ef026fd59510422e690a095d11e542",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "plastic_dish_rack": {
+     "faces": 2770,
+     "sha256": "2ed6481e32dcaf6654b38f0007a710143d97611339128c194431947e20778e06"
+    },
+    "white_pot": {
+     "faces": 1410,
+     "sha256": "4924b9af8ca731c36561a309479cfd5c6322b1f72362ba0f92672a0c11bc8a9c"
+    }
+   }
+  },
+  "episode_000030": {
+   "candidate": "learning_v7t@3999744",
+   "rollout_sha256": "f8cc66e490de4a860a8297daed1097c9e2a6f5d158f2c96dd4261e091ba12dd9",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "mini_sweeper": {
+     "faces": 756,
+     "sha256": "1f9967922b67bd0d4f47bd136ae6b06cfbc39a6a3d9b9e1824a76bccd77bc82c"
+    },
+    "plastic_dish_rack": {
+     "faces": 2770,
+     "sha256": "2ed6481e32dcaf6654b38f0007a710143d97611339128c194431947e20778e06"
+    }
+   }
+  },
+  "episode_000032": {
+   "candidate": "learning_v3@4999168",
+   "rollout_sha256": "924e542b22a40e65f141c9c9f12165c3f5f46c01c2c6c8a97f00078ffcd0af19",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_1cc138d3099969730c9eb117b834270942c249690dade8b09fb5bef094ca20f3/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_0b52a2b0bd40388814e31f89ed8166a69ce60437e036a468eaab9469ee426513/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_0a939fc65f1eb581b0bcda258a745f0114c391ec1ca2e602cc76e9532f131f1e/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_6761644ede5c9aefcffb2ecdac281288f2d819fdd1596a05f7a1d1596e4e0b93/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "blue_cup": {
+     "faces": 1094,
+     "sha256": "43c724e89bda0f0673a0122506db8bfb441e1d91f3b96bfe4ec3035122a835f0"
+    },
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000033": {
+   "candidate": "learning_v7r@5999616",
+   "rollout_sha256": "aad7eace63d9869096d5a4b912454c9b3bd0d2503d670f45bac30fd4c2569e11",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "blue_cup": {
+     "faces": 1094,
+     "sha256": "8691b3da5e94ef4e0a104687bbf2b1d86f5a562f8a498d3dd8d603ee91897a8d"
+    },
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000035": {
+   "candidate": "learning_v5@2998272",
+   "rollout_sha256": "a6c9c5837ab39ea40f5fa50827776b3860df719cc109143cc56edd439dbc2438",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_993e4cf397a9a300304b67221d98a41a5e223c2d0f4a462c9b6fd8d4aa78a780/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_b8b271433a747aaaacbfe58af4ce493c6493524858b55c306164c55190800cdb/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_17771d25494363974d5d6092f5a3fd7dcb19bf5b168d4d86fbdd4bf697945210/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000036": {
+   "candidate": "learning_v7r@5999616",
+   "rollout_sha256": "16ffe6eeeaa1e35baaca1240523c04b7169208cf8021dc91ac719cf244ced306",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_169a4e7ecbb38b25672cf7dc38f3d9228a8ddcb8771ac92b7ebea185bd8dbeba/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_141765783f195411f019a7417b5b613b96987acc878df81d87cd3aa2e40a2a39/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000037": {
+   "candidate": "learning_v6i@1999872",
+   "rollout_sha256": "10b7a37fe04eacc42c10d6919f4d798882967547d89654e0aa7c60f1987bdc31",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_09d366e778bc09fc69bd486bf66663fa9f0569c9e4b782590bb4c77a943916e6/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_cd4c803e2df7fd9b63f0d453781224e59538553a770516a856c577f6f1d9181b/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_0e84868a4f7ff461c13a0ce6709382dc0d6795f67d178e6fdd6b69c5adae40c0/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "wooden_spoon": {
+     "faces": 1076,
+     "sha256": "7252942b05d67a817a13f7526bcb70c7f9b4c4d0ecfa959ff2e390a819cf1581"
+    }
+   }
+  },
+  "episode_000038": {
+   "candidate": "learning_v5@4999168",
+   "rollout_sha256": "214b4cfc897a90c76a6b8f8431553470019d5f96c814e5d25dde31e6532a27e5",
+   "producer_source": {
+    "build_track3_scored_reference.py": "producers/sha256_5f706b50c4e2163f6089743581db545b0b0f412c773b264e2edd8759f4b2afea/build_track3_scored_reference.py",
+    "build_track3_v2_object_manifests.py": "producers/sha256_3f6a25b8ba041d178b0c6c5a6196b2d44d418a87dc11f0d3bf58ceeeaaf4e305/build_track3_v2_object_manifests.py",
+    "evaluate_track3_canonical_checkpoint.py": "producers/sha256_bb8532bc851d5f96a3ad5ec8b5449fe5cd320a0757cf75a7dcda3d040d1a5fd2/evaluate_track3_canonical_checkpoint.py",
+    "initialize_sharpa_retarget.py": "producers/sha256_1d61fb6dda6f973f1800ecd15140bd16107a710486fc40dc0eb9349add53ac27/initialize_sharpa_retarget.py",
+    "prepare_track3_learning_v3.py": "producers/sha256_993e4cf397a9a300304b67221d98a41a5e223c2d0f4a462c9b6fd8d4aa78a780/prepare_track3_learning_v3.py",
+    "run_track3_fastlane_reference.py": "producers/sha256_73d4c082d3aa7e6073513a764857d4af572ba4af3da9c491aedffad9e108ecb8/run_track3_fastlane_reference.py",
+    "run_track3_learning_v3.py": "producers/sha256_b8b271433a747aaaacbfe58af4ce493c6493524858b55c306164c55190800cdb/run_track3_learning_v3.py",
+    "track3_com_reference.py": "producers/sha256_09fad4435f58b7dd8c2de79b78e901ba0a3097e6583f37e765c4115ae1ab5485/track3_com_reference.py",
+    "track3_contact_trace.py": "producers/sha256_a7342353ccc4b65756ba2edacd4a9b817e31711026da3c6bced71979112fbfcc/track3_contact_trace.py",
+    "track3_evaluation_harness.py": "producers/sha256_60918b3cb35eefebfbbe55c6358984a6531570c80d431887249332899eed91f0/track3_evaluation_harness.py",
+    "track3_masked_contact.py": "producers/sha256_b87a98caf61823cf68dfe132f98068639b6a9c25d7d43251eaf2421afb0a28fd/track3_masked_contact.py",
+    "track3_masked_objective.py": "producers/sha256_4cba8a7b2d19df34d76d740e6bbd9b164444fc2992f8344eeeab09cc3a4451dd/track3_masked_objective.py",
+    "track3_reference_alignment.py": "producers/sha256_d3b7aa40280210bd8e25b90393b52b8814b7bcf9cb600a57c03a2f642bed608a/track3_reference_alignment.py",
+    "track3_weighted_hand_objective.py": "producers/sha256_f8596f0c03affd6a83a3365f93bd0a85b571e3f98dd090d285ffc7ecdc2ef009/track3_weighted_hand_objective.py",
+    "track3_wrench_adapter.py": "producers/sha256_298d1c00ae2a03aa19d209bd279f757588d9e9d422d928b7c62733444398314f/track3_wrench_adapter.py",
+    "train_track3_learning_segment.py": "producers/sha256_17771d25494363974d5d6092f5a3fd7dcb19bf5b168d4d86fbdd4bf697945210/train_track3_learning_segment.py",
+    "train_track3_masked.py": "producers/sha256_588be74a367ec73152aec6f9781304830fd3ee4d8747413ff3c9e48031038022/train_track3_masked.py"
+   },
+   "meshes": {
+    "mini_dust_pan": {
+     "faces": 1348,
+     "sha256": "6070aacf7cb423ae59d4aa90dace29e2bdfbbbbf5b7159b7705b3ce7d0d87404"
+    }
+   }
+  }
+ },
+ "shared": {
+  "scripts/select_track3_submission_candidates.py": "producers/sha256_5fee66a290ea30b4a3ec6c4268ff186cd7f12830e611fc0ea8948aa1e22fdd6f/select_track3_submission_candidates.py",
+  "scripts/score_track3_trees.py": "producers/sha256_7ff7a47b619e525b46b3c7c11b14b220e12a2d344cbba4845403d5420b2ca8c0/score_track3_trees.py",
+  "scripts/summarize_track3_voc_curves.py": "producers/sha256_d3ad92183633d5e425dfaab5fda2b55dc88e98772149539c842f851bcba9a86b/summarize_track3_voc_curves.py",
+  "scripts/track3_voc_inertia.py": "producers/sha256_d1c2154924c83f59bc7d974e70045e17ad2c5d5b02a3e4ed3c4e228d476e6404/track3_voc_inertia.py",
+  "scripts/run_track3_learning_v3_queue.sh": "producers/sha256_be1bef3715d84e234a48cdeba837a88bc120844d2ac63d8f22d41714a10020e1/run_track3_learning_v3_queue.sh",
+  "scripts/run_track3_shared_queue.sh": "producers/sha256_91a8962641814f5972743050f04c7767b0738819ebaec409350646101c74a5ee/run_track3_shared_queue.sh",
+  "scripts/summarize_track3_object_motion.py": "producers/sha256_8547de58200fa42ca11e486058778265327aab90396313f1fc952b26b7f45f65/summarize_track3_object_motion.py",
+  "scripts/procedural_geometry/beige_cup.py": "producers/sha256_7509ed3ee97d00eadae5311c112b8863aefb01a89d92bfb9913d5dca9d06da67/beige_cup.py",
+  "scripts/procedural_geometry/blue_cup.py": "producers/sha256_23ee96f69db8fc0fe9f39db550e493f126ec56a8329f8e23c6677a0f61249d41/blue_cup.py",
+  "scripts/procedural_geometry/board.py": "producers/sha256_9e6d50ff4ffcad2680735448d4f4c15ab9aa1ea6329a4e397d2094b78bbfc297/board.py",
+  "scripts/procedural_geometry/build.py": "producers/sha256_b4e7cca36c4534c925e65090df0a46e2043bf9d0d7c2d1ef1d49fe292f0f40e5/build.py",
+  "scripts/procedural_geometry/common.py": "producers/sha256_ea12134c06c77ac73000423107b6e9623e2fc18754252d5569e71477e4bb6cea/common.py",
+  "scripts/procedural_geometry/cup.py": "producers/sha256_7447f3a47536eee35f9d5cbc95d972c905ed85a9cbccafd08ae9c764c7eed448/cup.py",
+  "scripts/procedural_geometry/diag_penetration_v7.py": "producers/sha256_39715e20dac036a168691c04f3adf26c11f6ce55717eb7563a93358c40a10462/diag_penetration_v7.py",
+  "scripts/procedural_geometry/eval_collision.py": "producers/sha256_242f4f35c0d81e735aef872598a5af125bb4eeb1aa7ef3612d2941ced1ab30a9/eval_collision.py",
+  "scripts/procedural_geometry/eval_public_scans.py": "producers/sha256_aeed57a10fd42a511a5ab8c75de89fdffa7f1dc9ed7699f02624c96b92c59650/eval_public_scans.py",
+  "scripts/procedural_geometry/eval_silhouettes.py": "producers/sha256_48489fe718d4d94913e5e85425f08bd98700d8b533aea592d9a298f230956d2c/eval_silhouettes.py",
+  "scripts/procedural_geometry/fitting.py": "producers/sha256_40189fefbfbd68c0b81ffd9fbf689ee5aec271e36a684fea7a2f4211efd6b08c/fitting.py",
+  "scripts/procedural_geometry/fix_support_v7.py": "producers/sha256_878fe69a8c4a0cafa8d0767e1430bbe550e911b723c1b2d678977742e4d8c4d4/fix_support_v7.py",
+  "scripts/procedural_geometry/make_summary.py": "producers/sha256_c2336269fcb1205086dbc360411b8b77d395c3bb39c98e1f4c62ba5418a2ff67/make_summary.py",
+  "scripts/procedural_geometry/make_v7_manifests.py": "producers/sha256_77a105606e1bfb94c49fb14a3c42c5bd13ab8963f24809fb54a14379f8b78cf3/make_v7_manifests.py",
+  "scripts/procedural_geometry/mini_dust_pan.py": "producers/sha256_9c55157a27060cf04bba6133a6af0fc9cd53d5486cb1b334dc15dd0e5662f873/mini_dust_pan.py",
+  "scripts/procedural_geometry/mini_sweeper.py": "producers/sha256_b10abb81856dc80e619e6105a39c5ca5891ddfea5b57e93eef1e6f9a91cfb52c/mini_sweeper.py",
+  "scripts/procedural_geometry/parts.py": "producers/sha256_6a8899593eb0648683fa387a81ec15841a7d19ddfe33c59719280d4a42fe4c61/parts.py",
+  "scripts/procedural_geometry/plastic_dish_rack.py": "producers/sha256_9509351f0bae1403ea1c143ea940e77bfa53e6f24436a94776317d58607a8211/plastic_dish_rack.py",
+  "scripts/procedural_geometry/render_scenes.py": "producers/sha256_c0b45ef936bf5378f19a3ca6c926ee4eef5525f4bb553be6456c4b87f4ad5ee2/render_scenes.py",
+  "scripts/procedural_geometry/silhouette.py": "producers/sha256_e27c17c383ca19ec169efa5c2027d6b7eeaba0ffe7993293818097bf914f1072/silhouette.py",
+  "scripts/procedural_geometry/water_pitcher.py": "producers/sha256_1b32cf796bfe566539e6cda303fc1017fe81e825d2d9d01f8265a32e333de4c1/water_pitcher.py",
+  "scripts/procedural_geometry/white_pot.py": "producers/sha256_0b514759101b18b833b9631d765cb45637dfceb800e21126f0ae0e6eef1f098d/white_pot.py",
+  "scripts/procedural_geometry/white_pot_lid.py": "producers/sha256_1b50881a0fb93939cc687a4c358722a366e30b30ecba25c37c46692c35aef650/white_pot_lid.py",
+  "scripts/procedural_geometry/wooden_piece_1.py": "producers/sha256_5fbe7ba98597ba42841c88a8ef5234736bd1a713c23eba11c9216019fc2e1e7e/wooden_piece_1.py",
+  "scripts/procedural_geometry/wooden_piece_2.py": "producers/sha256_616b6e82d893253a208451d5a7ef9e83513bbfe22b414d99e4a738fb54862a86/wooden_piece_2.py",
+  "scripts/procedural_geometry/wooden_spoon.py": "producers/sha256_5335b4c9499146032300b5d605b1f362896e75f1b379d44797298f04d9e41e4e/wooden_spoon.py",
+  "scripts/procedural_geometry/run_v7.sh": "producers/sha256_167a3a6b4585b99a0fe2fa90fdc10086af5984c77efd631e4bf3a366d21e2179/run_v7.sh",
+  "scripts/hand_contact_v1/build_tree.py": "producers/sha256_294d6980f6c99c49b2b368546f974ddf4361726957c79e92f6d0338ea6964c9d/build_tree.py",
+  "scripts/hand_contact_v1/common.py": "producers/sha256_068b17abee21957a06a03c71580489cd90f21910791917e035051aaf7d940777/common.py",
+  "scripts/hand_contact_v1/diag.py": "producers/sha256_37607d05ad57bae45ff7b4850468ca040ec7d964f8906040fffeac0dd2184ac5/diag.py",
+  "scripts/hand_contact_v1/eval_geom.py": "producers/sha256_eeda563f2f6f5ddc0c56b98146ac9054211b947e87d903a6d6f3ca7df387a084/eval_geom.py",
+  "scripts/hand_contact_v1/evidence.py": "producers/sha256_5f82efe930783e267fc61f1e0846401ffe1c308b1ce6c17266ad6929d42707d5/evidence.py",
+  "scripts/hand_contact_v1/opt.py": "producers/sha256_5693588e74d05f2b5324930ee0e691cb848e4fb855845491fbe5f13f29d8447b/opt.py",
+  "scripts/hand_contact_v1/render_hands.py": "producers/sha256_8bbdb339d350b5ef07b5ba697f6e1756ebfcb15deee7e2e0ceee036d6fdee5f6/render_hands.py",
+  "scripts/hand_contact_v1/render_replay_cmp.py": "producers/sha256_9be203d28aff78e0a83058e26cecee095af8541d5c56f9ad0a7cb3fa8c9c8dc5/render_replay_cmp.py",
+  "scripts/hand_contact_v1/replay.py": "producers/sha256_a54f6fba70ef1b00e18b44004b307e8603db94dca49a1b5efdadbdf43dd7a69b/replay.py",
+  "scripts/hand_contact_v1/robot_kin.py": "producers/sha256_40eceb7fab06acb1be8cb2151e57d430e44d0b656f6dc82e72cc6301722c1c67/robot_kin.py",
+  "scripts/hand_contact_v1/robot_post.py": "producers/sha256_3286bf45eb9c1ac8ca61a7a95c38661b6e1f1d16d888c82f26a6759c9b130092/robot_post.py",
+  "scripts/hand_contact_v1/spoon_pickup.py": "producers/sha256_bbb59ce22e0bc1ee24a54173d7de5b469a7848e0dcb5c3dfb3043c19016faa2f/spoon_pickup.py",
+  "scripts/hand_contact_v1/summarize.py": "producers/sha256_173b2a1b2c6be30eb0f444460d45f29143ab72ff8295198d9cae01a4c94f408d/summarize.py"
+ }
+}
