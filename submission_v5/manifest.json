@@ -1,0 +1,270 @@
+{
+ "submission": "track3 #5 (v5 candidate)",
+ "assembly_sha256": "eaebaee40494dce31a2682a0fabf52873f7376f0579ac5415348dd1220ac67fa",
+ "episodes": {
+  "episode_000001": {
+   "candidate": "lv8r@3999744",
+   "rollout_sha256": "1a58c51a4af355a985535b2df55e2c0dfa52c7e816e2afac72cd964e643955cd",
+   "meshes": {
+    "white_pot": {
+     "geometry": "v8",
+     "sha256": "2d76a0a3b8f5ea537ab553fa9d4eace18b77be31f22d94aad3d8dd81cc53f586"
+    },
+    "white_pot_lid": {
+     "geometry": "v8",
+     "sha256": "ee7641f2efd260e8c48ce48d2b472b46d44350a0b9da6306a0a5a63bc360f915"
+    }
+   }
+  },
+  "episode_000003": {
+   "candidate": "reeval:learning_v7r@3999744",
+   "rollout_sha256": "7a5d437357c8c5b0756bd7bde3cadef33c55f5ed4b70997246f63e415eda7f75",
+   "meshes": {
+    "white_pot": {
+     "geometry": "v8",
+     "sha256": "2d76a0a3b8f5ea537ab553fa9d4eace18b77be31f22d94aad3d8dd81cc53f586"
+    },
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000005": {
+   "candidate": "reeval:learning_v6i@7999488",
+   "rollout_sha256": "ff9c525e55c81e4737a4f1be47f454aa66d8bad7d9e09a14eb23803218694151",
+   "meshes": {
+    "white_pot": {
+     "geometry": "v8",
+     "sha256": "2d76a0a3b8f5ea537ab553fa9d4eace18b77be31f22d94aad3d8dd81cc53f586"
+    },
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000006": {
+   "candidate": "reeval:learning_v7r@5999616",
+   "rollout_sha256": "e8f1db28ebed87ce9a311b01f8dbdbe0b399788b7a001b3d6c2b1db77298afae",
+   "meshes": {
+    "white_pot": {
+     "geometry": "v8",
+     "sha256": "2d76a0a3b8f5ea537ab553fa9d4eace18b77be31f22d94aad3d8dd81cc53f586"
+    },
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000008": {
+   "candidate": "lv8r@9999360",
+   "rollout_sha256": "c21409c129bc5884d5dd55ac6a24589497e828df37afd6b4179a6f94c7938301",
+   "meshes": {
+    "beige_cup": {
+     "geometry": "v8",
+     "sha256": "3b7f16a6ded1fdfe77b7e43785101b3b022a2d17a64a9eb888a0b7bacbb7d693"
+    },
+    "white_pot": {
+     "geometry": "v8",
+     "sha256": "2d76a0a3b8f5ea537ab553fa9d4eace18b77be31f22d94aad3d8dd81cc53f586"
+    }
+   }
+  },
+  "episode_000010": {
+   "candidate": "reeval:learning_fm_hc@9999360",
+   "rollout_sha256": "20018ec955f26d9325c59359c65eaf5a558304385e859e4752e44b459f1c0e8d",
+   "meshes": {
+    "blue_cup": {
+     "geometry": "v8",
+     "sha256": "9de6f504e392136c0d6dde9f4ee57a2ee2cf4b85857e079543111b9a09d2f872"
+    },
+    "beige_cup": {
+     "geometry": "v8",
+     "sha256": "3b7f16a6ded1fdfe77b7e43785101b3b022a2d17a64a9eb888a0b7bacbb7d693"
+    }
+   }
+  },
+  "episode_000014": {
+   "candidate": "lv8r@9999360",
+   "rollout_sha256": "d8f54a85513c0dc33b3fa0c87891b1024afe2ceecf42dcba3c5328b718f0bca9",
+   "meshes": {
+    "blue_cup": {
+     "geometry": "v8",
+     "sha256": "9de6f504e392136c0d6dde9f4ee57a2ee2cf4b85857e079543111b9a09d2f872"
+    },
+    "plastic_dish_rack": {
+     "geometry": "v8",
+     "sha256": "847b9b9b11851c43480834e3872e799295bc657ff151cdd261c0119785337a3d"
+    }
+   }
+  },
+  "episode_000015": {
+   "candidate": "reeval:learning_v7t@5999616",
+   "rollout_sha256": "0195bc52a5f23937ced9e056caa6685c88ef3fd66e9878df8b9a6c85929741f6",
+   "meshes": {
+    "plastic_dish_rack": {
+     "geometry": "v8",
+     "sha256": "847b9b9b11851c43480834e3872e799295bc657ff151cdd261c0119785337a3d"
+    },
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000016": {
+   "candidate": "reeval:learning_v7t@7999488",
+   "rollout_sha256": "76dec13c7578978adf73a79fc68d1afdb98be9dfdbe251d2208e1765b2d387f3",
+   "meshes": {
+    "plastic_dish_rack": {
+     "geometry": "v8",
+     "sha256": "847b9b9b11851c43480834e3872e799295bc657ff151cdd261c0119785337a3d"
+    },
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000019": {
+   "candidate": "reeval:learning_v7r@1999872",
+   "rollout_sha256": "7f562f9a653219c816a6fc232409f726c6fa30c87f945c431c2c99672defc1f5",
+   "meshes": {
+    "mini_sweeper": {
+     "geometry": "v8",
+     "sha256": "2e1f1e743dc318014cb548def1ff033c7e4a892d9679e2ed229eeb47bd735018"
+    },
+    "mini_dust_pan": {
+     "geometry": "v8",
+     "sha256": "6070aacf7cb423ae59d4aa90dace29e2bdfbbbbf5b7159b7705b3ce7d0d87404"
+    }
+   }
+  },
+  "episode_000020": {
+   "candidate": "reeval:learning_fm_hc_ct@1999872",
+   "rollout_sha256": "49b0467238fb65f3612fb6d863929c3060284aa2c60616efbf5d8205d10ddb3b",
+   "meshes": {
+    "blue_cup": {
+     "geometry": "v8",
+     "sha256": "9de6f504e392136c0d6dde9f4ee57a2ee2cf4b85857e079543111b9a09d2f872"
+    },
+    "water_pitcher": {
+     "geometry": "v8",
+     "sha256": "57e8e9dc080bafd6c997c479e2e795086adf9cd2d613903a586e32ce9bbf0122"
+    }
+   }
+  },
+  "episode_000025": {
+   "candidate": "reeval:learning_v7r@1999872",
+   "rollout_sha256": "f59e170edea99b098adc5cee69c1e15dce3cf63912b7f499bdc6a044a4f97599",
+   "meshes": {
+    "wooden_piece_1": {
+     "geometry": "v8",
+     "sha256": "3ddb2dec7538b5532206578b7044cf1a4bc1d9033ba0472fd9f45c50001eb70a"
+    },
+    "wooden_piece_2": {
+     "geometry": "v8",
+     "sha256": "dd0aeaa0fad3360bfaebb6ce615538ebeb45e1c3fa36873343826afb58cf883f"
+    }
+   }
+  },
+  "episode_000028": {
+   "candidate": "reeval:learning_v7r@9999360",
+   "rollout_sha256": "825f35a09794e512f2207bb9ce6ed23eb018f506322573a107d8ce19346aaff5",
+   "meshes": {
+    "plastic_dish_rack": {
+     "geometry": "v8",
+     "sha256": "847b9b9b11851c43480834e3872e799295bc657ff151cdd261c0119785337a3d"
+    },
+    "white_pot": {
+     "geometry": "v8",
+     "sha256": "2d76a0a3b8f5ea537ab553fa9d4eace18b77be31f22d94aad3d8dd81cc53f586"
+    }
+   }
+  },
+  "episode_000030": {
+   "candidate": "lv8r@7999488",
+   "rollout_sha256": "767c4a23ae58968ebe3c5822a0f5fb6dacabeca90f0d124c2698eee3612e8b5b",
+   "meshes": {
+    "mini_sweeper": {
+     "geometry": "v8",
+     "sha256": "2e1f1e743dc318014cb548def1ff033c7e4a892d9679e2ed229eeb47bd735018"
+    },
+    "plastic_dish_rack": {
+     "geometry": "v8",
+     "sha256": "847b9b9b11851c43480834e3872e799295bc657ff151cdd261c0119785337a3d"
+    }
+   }
+  },
+  "episode_000032": {
+   "candidate": "lv8r@9999360",
+   "rollout_sha256": "685a534db96c7364f8ab27a05d4c42f4d52cbbd022710b1b57106e710323dd52",
+   "meshes": {
+    "blue_cup": {
+     "geometry": "v8",
+     "sha256": "9de6f504e392136c0d6dde9f4ee57a2ee2cf4b85857e079543111b9a09d2f872"
+    },
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000033": {
+   "candidate": "reeval:learning_v7r@5999616",
+   "rollout_sha256": "04d63605bb1b96895eb33c51643d79f55a2c9a625c9ffdd4af14f072994f69b1",
+   "meshes": {
+    "blue_cup": {
+     "geometry": "v8",
+     "sha256": "9de6f504e392136c0d6dde9f4ee57a2ee2cf4b85857e079543111b9a09d2f872"
+    },
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000035": {
+   "candidate": "reeval:learning_v5@2998272",
+   "rollout_sha256": "f3aad19604c4f8cc8072239c0df97720107c7c2c1b299ac8e6b31b611791a72b",
+   "meshes": {
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000036": {
+   "candidate": "lv8r@9999360",
+   "rollout_sha256": "a5e97a771fe80d59fdcac79a59461c8b48094c73fec66a5cfbddf167c5fb9282",
+   "meshes": {
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000037": {
+   "candidate": "lv8r@5999616",
+   "rollout_sha256": "19f91b54a4d347c888c9759ffcf569d9d5148bfc8ce342a456df6f45acbb36a0",
+   "meshes": {
+    "wooden_spoon": {
+     "geometry": "v8",
+     "sha256": "cb47ddfb84532318c43b70e010911453772cb370faf1179cf27a30b31f892f83"
+    }
+   }
+  },
+  "episode_000038": {
+   "candidate": "reeval:learning_v3@4999168",
+   "rollout_sha256": "16ac9dec4319cee473dc76aecf0bb8749f814879eded440538f96c3c5d474053",
+   "meshes": {
+    "mini_dust_pan": {
+     "geometry": "v8",
+     "sha256": "6070aacf7cb423ae59d4aa90dace29e2bdfbbbbf5b7159b7705b3ce7d0d87404"
+    }
+   }
+  }
+ }
+}
